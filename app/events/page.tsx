@@ -3,6 +3,7 @@ import UpcomingEvents from '@/app/modules/components/events/UpcomingEvents'
 import PastEvents from '../modules/components/events/PastEvents'
 import EventRegistration from '../modules/components/events/EventRegistration'
 import EventFAQ from '../modules/components/events/EventFAQ'
+import { PageLayout } from '@/app/modules/layout/page-comp'
 
 // This would come from your CMS
 const pageData = {
@@ -15,7 +16,7 @@ const pageData = {
 
 export default function EventsPage() {
   return (
-    <div className="flex min-h-screen flex-col pt-16">
+    <PageLayout>
       <Hero 
         title={pageData.hero.title}
         description={pageData.hero.description}
@@ -25,6 +26,6 @@ export default function EventsPage() {
       <PastEvents />
       <EventRegistration />
       <EventFAQ />
-    </div>
+    </PageLayout>
   )
 }

@@ -3,7 +3,7 @@ import ContactForm from '../modules/components/contact/ContactForm'
 import ContactInfo from '../modules/components/contact/ContactInfo'
 import SupportLinks from '../modules/components/contact/SupportLinks'
 import SocialMedia from '../modules/components/contact/SocialMedia'
-
+import { PageLayout } from '@/app/modules/layout/page-comp'
 // This would come from your CMS
 const pageData = {
   hero: {
@@ -15,7 +15,7 @@ const pageData = {
 
 export default function ContactPage() {
   return (
-    <div className="flex min-h-screen flex-col pt-16">
+    <PageLayout>
       <Hero 
         title={pageData.hero.title}
         description={pageData.hero.description}
@@ -29,6 +29,6 @@ export default function ContactPage() {
           <SocialMedia />
         </div>
       </div>
-    </div>
+    </PageLayout>
   )
 }

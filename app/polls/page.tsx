@@ -3,6 +3,7 @@ import ActivePolls from '@/app/modules/components/polls/ActivePolls'
 import PollResults from '@/app/modules/components/polls/PollResults'
 import GetInvolved from '@/app/modules/components/polls/GetInvolved'
 import PollFAQ from '@/app/modules/components/polls/PollFAQ'
+import { PageLayout } from '@/app/modules/layout/page-comp'
 
 // This would come from your CMS
 const pageData = {
@@ -15,7 +16,7 @@ const pageData = {
 
 export default function PollsPage() {
   return (
-    <div className="flex min-h-screen flex-col pt-16">
+    <PageLayout>
       <Hero 
         title={pageData.hero.title}
         description={pageData.hero.description}
@@ -25,6 +26,6 @@ export default function PollsPage() {
       <PollResults />
       <GetInvolved />
       <PollFAQ />
-    </div>
+    </PageLayout>
   )
 }
