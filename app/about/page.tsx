@@ -4,7 +4,7 @@ import MissionValues from '../modules/components/home/MissionStatement'
 import Impact from '../modules/components/about/Impact'
 import Affiliations from '../modules/components/about/Affiliations'
 import WhyJoinUs from '../modules/components/about/WhyJoinUs'
-import { PageLayout } from '@/app/modules/layout/page'
+import { PageLayout } from '@/app/modules/layout/page-comp'
 
 export default function AboutPage() {
   return (
