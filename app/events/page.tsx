@@ -16,7 +16,7 @@ const pageData = {
 
 export default function EventsPage() {
   return (
-    <PageLayout>
+    <PageLayout className="pt-16">
       <Hero 
         title={pageData.hero.title}
         description={pageData.hero.description}
