@@ -3,7 +3,7 @@ import ContactForm from '../modules/components/contact/ContactForm'
 import ContactInfo from '../modules/components/contact/ContactInfo'
 import SupportLinks from '../modules/components/contact/SupportLinks'
 import SocialMedia from '../modules/components/contact/SocialMedia'
-import { PageLayout } from '@/app/modules/layout/page'
+import { PageLayout } from '@/app/modules/layout/page-comp'
 // This would come from your CMS
 const pageData = {
   hero: {

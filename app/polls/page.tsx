@@ -3,7 +3,7 @@ import ActivePolls from '@/app/modules/components/polls/ActivePolls'
 import PollResults from '@/app/modules/components/polls/PollResults'
 import GetInvolved from '@/app/modules/components/polls/GetInvolved'
 import PollFAQ from '@/app/modules/components/polls/PollFAQ'
-import { PageLayout } from '@/app/modules/layout/page'
+import { PageLayout } from '@/app/modules/layout/page-comp'
 
 // This would come from your CMS
 const pageData = {
