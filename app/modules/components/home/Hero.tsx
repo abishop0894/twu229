@@ -48,6 +48,7 @@ const Hero = () => {
             src={slide.image}
             alt={slide.alt}
             fill
+            loading="eager"
             className="object-cover"
             priority={index === 0}
           />
