@@ -4,10 +4,11 @@ import MissionValues from '../modules/components/home/MissionStatement'
 import Impact from '../modules/components/about/Impact'
 import Affiliations from '../modules/components/about/Affiliations'
 import WhyJoinUs from '../modules/components/about/WhyJoinUs'
+import { PageLayout } from '@/app/modules/layout/page'
 
 export default function AboutPage() {
   return (
-    <div className="flex min-h-screen flex-col pt-16">
+    <PageLayout>
       <Hero />
       <History />
       <MissionValues 
@@ -17,6 +18,6 @@ export default function AboutPage() {
       <Impact />
       <Affiliations />
       <WhyJoinUs />
-    </div>
+    </PageLayout>
   )
 }
