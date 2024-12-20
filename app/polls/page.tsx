@@ -16,7 +16,7 @@ const pageData = {
 
 export default function PollsPage() {
   return (
-    <PageLayout>
+    <PageLayout className="pt-16">
       <Hero 
         title={pageData.hero.title}
         description={pageData.hero.description}

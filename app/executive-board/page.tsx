@@ -6,7 +6,7 @@ import { PageLayout } from '@/app/modules/layout/page-comp'
 
 export default function ExecutiveBoardPage() {
   return (
-    <PageLayout>
+    <PageLayout className="pt-16">
       <Hero />
       <BoardMembers />
       <LeadershipVision />
