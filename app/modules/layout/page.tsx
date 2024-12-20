@@ -8,7 +8,7 @@ interface PageLayoutProps {
   children: React.ReactNode
 }
 
-const PageLayout = ({ children }: PageLayoutProps) => {
+export const PageLayout = ({ children }: PageLayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -31,4 +31,4 @@ const PageLayout = ({ children }: PageLayoutProps) => {
   )
 }
 
-export default PageLayout
+
