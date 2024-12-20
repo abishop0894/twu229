@@ -4,11 +4,9 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import { motion, AnimatePresence } from 'framer-motion'
 
-interface PageLayoutProps {
-  children: React.ReactNode
-}
 
-const PageLayout = ({ children }: PageLayoutProps) => {
+
+export const PageLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -31,4 +29,4 @@ const PageLayout = ({ children }: PageLayoutProps) => {
   )
 }
 
-export default PageLayout
+
