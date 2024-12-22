@@ -9,7 +9,7 @@ import { json } from "./api/json";
 function SurveyComponent() {
     const survey = new Model(json);
     survey.applyTheme(themeJson as ITheme);
-    survey.onComplete.add((sender, options) => {
+    survey.onComplete.add((sender) => {
         console.log(JSON.stringify(sender.data, null, 3));
     });
     return (<Survey model={survey} />);
