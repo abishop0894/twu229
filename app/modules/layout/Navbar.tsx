@@ -5,15 +5,29 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'motion/react'
 import { Fade as Hamburger } from 'hamburger-react'
+import { Plus, Minus } from 'lucide-react'
+
+interface NavLink {
+  href?: string;
+  label: string;
+  children?: { href: string; label: string }[];
+}
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isMediaOpen, setIsMediaOpen] = useState(false)
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { href: '/', label: 'Home' },
     { href: '/executive-board', label: 'Executive Board' },
     { href: '/about', label: 'About' },
-    { href: '/events', label: 'Events' },
+    {
+      label: 'Media',
+      children: [
+        { href: '/press', label: 'Press' },
+        { href: '/events', label: 'Events' },
+      ]
+    },
     { href: '/polls', label: 'Polls' },
     { href: '/contact', label: 'Contact' }
   ]
@@ -21,12 +35,12 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full bg-[#0a0086] shadow-md z-50">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-[13vh]">
           {/* Logo Container */}
-          <div className="relative mt-[7vh]">
-            <Link href="/" className="flex flex-col items-center bg-white text-[#0a0086] px-8 md:pt-[10vh] pt-6 pb-8 rounded-b-[100px] shadow-[0_10px_20px_rgba(0,0,0,0.25)] ">
+          <div className="relative lg:mt-[7vh] mt-[4vh]">
+            <Link href="/" className="flex flex-col items-center bg-white text-[#0a0086] px-8 md:pt-[10vh] pt-6 pb-8 rounded-b-[100px] shadow-[0_10px_20px_rgba(0,0,0,0.25)]">
               <span className="text-lg font-bold">Local 229</span>
-              <div className="md:w-[160px] md:h-[160px] w-[90px] h-[90px] relative">
+              <div className="lg:w-[160px] lg:h-[160px] w-[90px] h-[90px] relative">
                 <Image
                   src="https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
                   alt="TWU Local 229 Logo"
@@ -40,50 +54,112 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-white hover:text-[#ffd700] transition-colors duration-500"
-              >
-                {link.label}
-              </Link>
+              'children' in link ? (
+                <div key={link.label} className="relative group">
+                  <button
+                    className="text-white hover:text-[#ffd700] text-lg transition-colors duration-500 flex items-center gap-2"
+                    onClick={() => setIsMediaOpen(!isMediaOpen)}
+                  >
+                    {link.label}
+                    <svg 
+                      className="w-4 h-4 transition-transform group-hover:rotate-180" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div className="absolute left-0 mt-2 w-screen bg-white invisible group-hover:visible transition-all duration-300 shadow-lg -translate-x-1/2 transform">
+                    <div className="max-w-7xl mx-auto px-4 py-6">
+                      <div className="grid grid-cols-2 gap-8">
+                        {link.children?.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="text-[#0a0086] hover:text-[#ffd700] transition-colors duration-500"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href || ''}
+                  className="text-white hover:text-[#ffd700] text-lg transition-colors duration-500"
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <Hamburger
-              toggled={isOpen}
-              toggle={setIsOpen}
-              color="white"
-              size={24}
-            />
-           
+            <Hamburger toggled={isOpen} toggle={setIsOpen} color="white" size={24} />
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
           <motion.div
-          initial={{opacity: -110, y: -20}}
+            initial={{opacity: -110, y: -20}}
             animate={{opacity: 1, y: 0}}
             exit={{opacity: 0, y: -20}}
             transition={{
               ease: "easeInOut",
               duration: 0.2,
             }}
-          className="md:hidden h-screen  opacity-90">
-            <div
-            className="px-2 pt-2 pb-3 flex flex-col items-end space-y-1">
+            className="md:hidden h-screen opacity-90"
+          >
+            <div className="px-2 pt-2 pb-3 flex flex-col items-end space-y-1">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block px-3 py-2 text-white hover:text-[#ffd700] transition-colors duration-500"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                </Link>
+                'children' in link ? (
+                  <div key={link.label} className="w-full flex justify-end items-end flex-col">
+                    <button
+                      className="w-full flex items-end justify-end text-white hover:text-[#ffd700] transition-colors duration-500"
+                      onClick={() => setIsMediaOpen(!isMediaOpen)}
+                    >
+                      {link.label}
+                      {isMediaOpen ? (
+                        <Minus className="w-4 flex self-center h-4" />
+                      ) : (
+                        <Plus className="w-4 flex self-center h-4" />
+                      )}
+                    </button>
+                    {isMediaOpen && (
+                      <div className="">
+                        {link.children?.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="block py-2 text-white hover:text-[#ffd700] transition-colors duration-500"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <>
+                  <Link
+                    key={link.href}
+                    href={link.href || ''}
+                    className="block px-3 py-2 text-2xl text-white hover:text-[#ffd700] transition-colors duration-500"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.label}
+                  
+                  </Link>
+                       <hr/>
+           </>
+                )
               ))}
             </div>
           </motion.div>

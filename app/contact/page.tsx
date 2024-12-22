@@ -13,9 +13,11 @@
     }
     }
 
+
+
     export default function ContactPage() {
     return (
-        <PageLayout className="pt-16">
+        <PageLayout className="pt-[12vh]">
         <Hero 
             title={pageData.hero.title}
             description={pageData.hero.description}
