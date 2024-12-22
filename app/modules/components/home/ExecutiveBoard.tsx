@@ -8,17 +8,17 @@ const executives = [
   {
     name: 'Duane Boone',
     role: 'President',
-    image: '/executives/president.jpg'
+    image: "https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
   },
   {
     name: 'Jose Garcia',
     role: 'Vice President',
-    image: '/executives/vice-president.jpg'
+    image: "https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
   },
   {
     name: 'Charlise Wright',
     role: 'Secretary-Treasurer',
-    image: '/executives/secretary.jpg'
+    image: "https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
   }
 ]
 

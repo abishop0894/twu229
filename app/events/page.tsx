@@ -8,7 +8,7 @@ import { PageLayout } from '@/app/modules/layout/page-comp'
 // This would come from your CMS
 const pageData = {
   hero: {
-    title: "Stay Connected with Our Events",
+    title: "Events",
     description: "Join us for upcoming meetings, training sessions, and community gatherings. Your participation makes our union stronger.",
     image: "https://local229.s3.us-east-1.amazonaws.com/events-hero.jpg"
   }
@@ -16,7 +16,7 @@ const pageData = {
 
 export default function EventsPage() {
   return (
-    <PageLayout className="pt-16">
+    <PageLayout className="pt-[12vh]">
       <Hero 
         title={pageData.hero.title}
         description={pageData.hero.description}

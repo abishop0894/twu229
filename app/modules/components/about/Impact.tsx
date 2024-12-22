@@ -1,15 +1,18 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { NumberTicker } from '../number-ticker'
 
 const achievements = [
   {
-    stat: '85%',
+    stat: Number(85),
+    metric: '%',
     title: 'Member Satisfaction',
     description: 'Of our members report high satisfaction with union representation'
   },
   {
-    stat: '$32/hr',
+    stat: Number(32),
+    metric: '$/hr',
     title: 'Average Wage',
     description: 'Competitive wages negotiated for our members'
   },
@@ -19,8 +22,9 @@ const achievements = [
     description: 'Round-the-clock assistance for our members'
   },
   {
-    stat: '100+',
+    stat: Number(100),
     title: 'Active Members',
+    metric: '+',
     description: 'Growing stronger together each year'
   }
 ]
@@ -53,9 +57,17 @@ const Impact = () => {
               transition={{ delay: index * 0.1 }}
               className="bg-white p-6 rounded-lg shadow-lg text-center"
             >
-              <div className="text-4xl font-bold text-[#0a0086] mb-2">
-                {item.stat}
-              </div>
+              { typeof item.stat === 'number' ?
+            
+                <div className="items-center justify-center flex-row gap-1">
+                <NumberTicker className="text-4xl font-bold text-[#0a0086] mb-2" value={item.stat} />
+                <span className="text-4xl font-bold text-[#0a0086] mb-2">{item.metric}</span>
+                </div>
+                : 
+                <div className="text-4xl font-bold text-[#0a0086] mb-2">
+                  {item.stat}
+                </div>
+              }
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
               <p className="text-gray-600">{item.description}</p>
             </motion.div>

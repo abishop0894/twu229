@@ -6,15 +6,15 @@ import Image from 'next/image'
 const affiliates = [
   {
     name: 'Transport Workers Union of America',
-    logo: 'https://local229.s3.us-east-1.amazonaws.com/twu-logo.png'
+    logo: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png'
   },
   {
     name: 'AFL-CIO',
-    logo: 'https://local229.s3.us-east-1.amazonaws.com/aflcio-logo.png'
+    logo: "https://local229.s3.us-east-1.amazonaws.com/AFL-CIO-seal.svg.png"
   },
   {
     name: 'NJ State AFL-CIO',
-    logo: 'https://local229.s3.us-east-1.amazonaws.com/nj-aflcio-logo.png'
+    logo: 'https://local229.s3.us-east-1.amazonaws.com/njafl.png'
   }
 ]
 
