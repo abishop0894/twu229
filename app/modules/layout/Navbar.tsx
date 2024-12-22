@@ -37,8 +37,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-[13vh]">
           {/* Logo Container */}
-          <div className="relative lg:mt-[7vh] mt-[4vh]">
-            <Link href="/" className="flex flex-col items-center bg-white text-[#0a0086] px-8 md:pt-[10vh] pt-6 pb-8 rounded-b-[100px] shadow-[0_10px_20px_rgba(0,0,0,0.25)]">
+          <div className="relative lg:mt-[7vh] mt-[3vh]">
+            <Link href="/" className="flex flex-col items-center bg-white text-[#0a0086] lg:px-8 px-2 md:pt-[10vh] pt-6 pb-8 rounded-b-[100px] shadow-[0_10px_20px_rgba(0,0,0,0.25)]">
               <span className="text-lg font-bold">Local 229</span>
               <div className="lg:w-[160px] lg:h-[160px] w-[90px] h-[90px] relative">
                 <Image
@@ -116,28 +116,30 @@ const Navbar = () => {
             }}
             className="md:hidden h-screen opacity-90"
           >
-            <div className="px-2 pt-2 pb-3 flex flex-col items-end space-y-1">
+            <div className="px-2 pt-[8vh] pb-3 flex flex-col items-start space-y-1">
               {navLinks.map((link) => (
                 'children' in link ? (
-                  <div key={link.label} className="w-full flex justify-end items-end flex-col">
+                  <div key={link.label} className="w-full flex justify-start items-start flex-col">
                     <button
-                      className="w-full flex items-end justify-end text-white hover:text-[#ffd700] transition-colors duration-500"
+                      className="w-full flex items-start gap-4 justify-start py-2 text-2xl px-[9px] text-white hover:text-[#ffd700] transition-colors duration-500"
                       onClick={() => setIsMediaOpen(!isMediaOpen)}
                     >
                       {link.label}
                       {isMediaOpen ? (
-                        <Minus className="w-4 flex self-center h-4" />
+                        <Minus className="w-8 flex self-center h-8" />
                       ) : (
-                        <Plus className="w-4 flex self-center h-4" />
+                        <Plus className="w-8 flex self-center h-8" />
                       )}
+                      
                     </button>
+                    
                     {isMediaOpen && (
                       <div className="">
                         {link.children?.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="block py-2 text-white hover:text-[#ffd700] transition-colors duration-500"
+                            className="block px-2 py-2 text-2xl text-white hover:text-[#ffd700] transition-colors duration-500"
                             onClick={() => setIsOpen(false)}
                           >
                             {child.label}
@@ -145,6 +147,7 @@ const Navbar = () => {
                         ))}
                       </div>
                     )}
+                    <hr className="w-full h-[1px] bg-white"/>
                   </div>
                 ) : (
                   <>
@@ -157,7 +160,7 @@ const Navbar = () => {
                     {link.label}
                   
                   </Link>
-                       <hr/>
+                       <hr className="w-full h-[1px] bg-white"/>
            </>
                 )
               ))}
