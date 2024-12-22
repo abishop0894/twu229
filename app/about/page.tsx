@@ -8,7 +8,7 @@ import { PageLayout } from '@/app/modules/layout/page-comp'
 
 export default function AboutPage() {
   return (
-    <PageLayout className="pt-16">
+    <PageLayout className="pt-[12vh]">
       <Hero />
       <History />
       <MissionValues 

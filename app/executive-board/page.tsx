@@ -1,13 +1,25 @@
-import Hero from '@/app/modules/components/executive-board/Hero'
+import Hero from '@/app/modules/layout/Hero'
 import BoardMembers from '@/app/modules/components/executive-board/BoardMembers'
 import LeadershipVision from '@/app/modules/components/executive-board/LeadershipVision'
 import ContactBoard from '@/app/modules/components/executive-board/ContactBoard'
 import { PageLayout } from '@/app/modules/layout/page-comp'
 
 export default function ExecutiveBoardPage() {
-  return (
-    <PageLayout className="pt-16">
-      <Hero />
+ const pageData = {
+    hero: {
+        title: "Meet Our Leadership",
+        description: "Dedicated individuals working tirelessly to represent and protect the interests of our members in Hudson County",
+        image: "https://local229.s3.us-east-1.amazonaws.com/contact-hero.jpg"
+    }
+    }
+ 
+    return (
+    <PageLayout className="pt-[12vh]">
+      <Hero 
+        title={pageData.hero.title}
+        description={pageData.hero.description}
+        image={pageData.hero.image}
+      />
       <BoardMembers />
       <LeadershipVision />
       <ContactBoard />
