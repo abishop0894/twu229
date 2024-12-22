@@ -4,7 +4,7 @@ import { Survey } from "survey-react-ui";
 import "survey-core/defaultV2.min.css";
 import { themeJson } from "./themes/theme";
 import "./index.css";
-import { json } from "./api/json";
+import {json} from "./api/json";
 
 function SurveyComponent() {
     const survey = new Model(json);
@@ -14,5 +14,7 @@ function SurveyComponent() {
     });
     return (<Survey model={survey} />);
 }
+
+//test
 
 export default SurveyComponent;
