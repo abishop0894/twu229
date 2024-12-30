@@ -1,7 +1,7 @@
 "use client"
 import Hero from '@/app/modules/layout/Hero'
 import PollFAQ from '@/app/modules/components/polls/PollFAQ'
-import { PageLayout } from '@/app/modules/layout/layout-comp'
+import PageLayout from '@/app/modules/layout/layout-comp'
 import { useState } from 'react'
 import OtpModal from '@/app/modules/components/polls/OtpModal'
 import SurveyComponent from '../modules/components/polls/SurveyComponent'

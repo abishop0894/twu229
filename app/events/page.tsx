@@ -3,7 +3,7 @@ import UpcomingEvents from '@/app/modules/components/events/UpcomingEvents'
 import PastEvents from '../modules/components/events/PastEvents'
 import EventRegistration from '../modules/components/events/EventRegistration'
 import EventFAQ from '../modules/components/events/EventFAQ'
-import { PageLayout } from '@/app/modules/layout/layout-comp'
+import PageLayout from '@/app/modules/layout/layout-comp'
 import {  getEvents } from '@/lib/firebase'
 
 // This would come from your CMS
