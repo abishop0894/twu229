@@ -9,24 +9,27 @@ export const json = {
       "name": "page1",
       "elements": [
         {
-          "type": "rating",
+          "type": "radiogroup",
           "name": "question1",
-          "title": "On a scale of 1-10, rank the unions performance as of late.",
-          "isRequired": true
+          "title": "On a scale of 1 to 5, how satisfied are you with your unions performance lately?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ]
         },
         {
           "type": "text",
-          "name": "question2",
-          "title": "What is something you'd like to see done by the union?",
-          "isRequired": true
-        },
-        {
-          "type": "text",
-          "name": "question3",
-          "title": "What is the likelihood of you suggestion to non-unionized coworkers to join the union?",
-          "isRequired": true
+          "name": "question2"
         }
       ]
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression"
     }
   ]
 }

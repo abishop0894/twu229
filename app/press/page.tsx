@@ -3,6 +3,9 @@ import Hero from '@/app/modules/layout/Hero'
 import GetInvolved from '@/app/modules/components/polls/GetInvolved'
 
 import { PageLayout } from '@/app/modules/layout/page-comp'
+import Articles from '@/app/modules/components/press/Articles'
+
+
 
 // This would come from your CMS
 const pageData = {
@@ -13,7 +16,7 @@ const pageData = {
   }
 }
 
-export default function PollsPage() {
+export default function PressPage() {
   return (
     <PageLayout className="pt-[12vh]">
       <Hero 
@@ -21,9 +24,16 @@ export default function PollsPage() {
         description={pageData.hero.description}
         image={pageData.hero.image}
       />
-  
+      <Articles />
       <GetInvolved />
       
     </PageLayout>
   )
 }
+/*
+
+
+See content in action by making an HTTP request:
+To this URL: https://<YOUR_DOMAIN>/api/<YOUR_CT>
+With the header: Authorization: bearer <YOUR_API_TOKEN>
+*/

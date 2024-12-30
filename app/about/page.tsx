@@ -5,6 +5,8 @@ import Impact from '../modules/components/about/Impact'
 import Affiliations from '../modules/components/about/Affiliations'
 import WhyJoinUs from '../modules/components/about/WhyJoinUs'
 import { PageLayout } from '@/app/modules/layout/page-comp'
+import MemberHighlight from '../modules/components/about/MemberHighlight'
+import Intro from '../modules/components/about/Intro'
 
 export default function AboutPage() {
   return (
@@ -17,7 +19,11 @@ export default function AboutPage() {
       />
       <Impact />
       <Affiliations />
+
       <WhyJoinUs />
+     <MemberHighlight />
+     <Intro />
     </PageLayout>
   )
 }
+
