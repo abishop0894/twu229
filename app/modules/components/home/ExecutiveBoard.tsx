@@ -7,7 +7,7 @@ import Link from 'next/link'
 const executives = [
   {
     name: 'Duane Boone',
-    role: 'President',
+    role: 'Acting President',
     image: "https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
   },
   {
@@ -16,7 +16,7 @@ const executives = [
     image: "https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
   },
   {
-    name: 'Charlise Wright',
+    name: 'Kelvin Turner',
     role: 'Secretary-Treasurer',
     image: "https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
   }

@@ -6,43 +6,43 @@ import Image from 'next/image'
 const boardMembers = [
   {
     name: 'Duane Boone',
-    role: 'President',
-    image: '/executives/president.jpg',
+    role: 'Acting President',
+    image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
     bio: 'bio here',
     email: 'president@twulocal229.org'
   },
   {
     name: 'Jose Garcia',
     role: 'Vice President',
-    image: '/executives/vice-president.jpg',
+    image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
     bio: 'bio here',
     email: 'vp@twulocal229.org'
   },
   {
     name: 'Kelvin Turner',
     role: 'Secretary-Treasurer',
-    image: '/executives/secretary.jpg',
+    image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
     bio: 'bio here',
     email: 'email@twulocal229.org'
   },
    {
     name: 'Alex Bishop',
     role: 'Communications/Media',
-    image: '/executives/secretary.jpg',
+    image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
     bio: 'bio here',
     email: 'email@twulocal229.org'
   },
   {
     name: 'Charlise Wright',
     role: 'Representative',
-    image: 'https://local229.s3.us-east-1.amazonaws.com/logo.png',
+    image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
     bio: 'bio here',
     email: 'email@twulocal229.org'
   },
    {
-    name: 'Chris Rotundo',
+    name: 'Chris Rotondo',
     role: 'Representative',
-    image: 'https://local229.s3.us-east-1.amazonaws.com/logo.png',
+    image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
     bio: 'bio here',
     email: 'email@twulocal229.org'
   },

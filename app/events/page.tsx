@@ -5,6 +5,7 @@ import EventRegistration from '../modules/components/events/EventRegistration'
 import EventFAQ from '../modules/components/events/EventFAQ'
 import { PageLayout } from '@/app/modules/layout/page-comp'
 
+
 // This would come from your CMS
 const pageData = {
   hero: {
@@ -15,6 +16,7 @@ const pageData = {
 }
 
 export default function EventsPage() {
+ 
   return (
     <PageLayout className="pt-[12vh]">
       <Hero 
