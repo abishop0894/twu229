@@ -3,7 +3,7 @@ import MissionStatement from '@/app/modules/components/home/MissionStatement'
 import ExecutiveBoard from '@/app/modules/components/home/ExecutiveBoard'
 import NewsUpdates from '@/app/modules/components/home/NewsUpdates'
 import UpcomingEvents from '@/app/modules/components/home/UpcomingEvents'
-import { PageLayout } from '@/app/modules/layout/page-comp'
+import { PageLayout } from '@/app/modules/layout/layout-comp'
 
 export default function Home() {
   return (

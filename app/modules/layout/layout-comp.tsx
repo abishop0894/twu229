@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 
 
-export const PageLayout = ({ children, className }: {children : React.ReactNode, className?: string}) => {
+const PageLayout = ({ children, className }: {children : React.ReactNode, className?: string}) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -29,4 +29,5 @@ export const PageLayout = ({ children, className }: {children : React.ReactNode,
   )
 }
 
+export default PageLayout
 
