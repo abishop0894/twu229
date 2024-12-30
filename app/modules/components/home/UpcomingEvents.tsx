@@ -2,32 +2,25 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-
-const events = [
-  {
-    title: 'Monthly Membership Meeting',
-    date: '2024-04-01',
-    time: '6:00 PM',
-    location: 'Union Hall',
-    description: 'Regular monthly meeting to discuss union business and updates.',
-  },
-  {
-    title: 'Safety Training Workshop',
-    date: '2024-04-15',
-    time: '2:00 PM',
-    location: 'Training Center',
-    description: 'Mandatory safety training for all transit operators.',
-  },
-  {
-    title: 'Family Picnic Day',
-    date: '2024-05-01',
-    time: '11:00 AM',
-    location: 'Liberty State Park',
-    description: 'Annual family gathering with food, games, and activities.',
-  }
-]
+import { useState, useEffect } from 'react'
+import { getEvents, Event } from '@/lib/firebase'
 
 const UpcomingEvents = () => {
+  const [events, setEvents] = useState<Event[]>([])
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const result = await getEvents()
+      // Filter for future events and take the first 3
+      const futureEvents = result
+        .filter(event => new Date(event.date) > new Date())
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+        .slice(0, 3)
+      setEvents(futureEvents)
+    }
+    fetchEvents()
+  }, [])
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -47,7 +40,7 @@ const UpcomingEvents = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {events.map((event, index) => (
+          {events.length > 0 ? events.map((event, index) => (
             <motion.div
               key={event.title}
               initial={{ opacity: 0, y: 20 }}
@@ -58,15 +51,14 @@ const UpcomingEvents = () => {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="bg-[#0a0086] text-white px-4 py-2 rounded-full text-sm">
-                  {event.date}
+                  {new Date(event.date).toLocaleDateString()}
                 </div>
-                <div className="text-gray-600">{event.time}</div>
               </div>
               <h3 className="text-xl font-bold text-[#0a0086] mb-2">
                 {event.title}
               </h3>
               <p className="text-gray-600 mb-2">{event.location}</p>
-              <p className="text-gray-700 mb-4">{event.description}</p>
+              <p className="text-gray-700 mb-4">{event.body}</p>
               <Link
                 href="/events"
                 className="text-[#0a0086] hover:text-blue-900 font-semibold"
@@ -74,7 +66,11 @@ const UpcomingEvents = () => {
                 Learn More →
               </Link>
             </motion.div>
-          ))}
+          )) : (
+            <div className="col-span-3 text-center text-gray-500">
+              Loading events...
+            </div>
+          )}
         </div>
 
         <motion.div

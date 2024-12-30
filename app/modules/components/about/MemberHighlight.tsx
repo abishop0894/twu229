@@ -7,8 +7,8 @@ import { useState, useEffect } from 'react'
 const carouselImages = [
   {
     src: "https://local229.s3.us-east-1.amazonaws.com/memberscarousel/member1.jpg",
-    title: "Member Name",
-    subtitle: "Member Position"
+    title: "Stephen Ayitey",
+    subtitle: "MOW"
   },
   {
     src: "https://local229.s3.us-east-1.amazonaws.com/memberscarousel/member2.jpg",

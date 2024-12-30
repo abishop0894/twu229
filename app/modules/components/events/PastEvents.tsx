@@ -3,44 +3,37 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-
+import { getEvents } from '@/lib/firebase'
+import { Event } from '@/lib/firebase'
 // This interface would match your CMS schema
-interface PastEvent {
-  id: string
-  title: string
-  date: string
-  description: string
-  images: string[]
-  highlights: string[]
-}
+
 
 // This would come from your CMS
-const pastEvents: PastEvent[] = [
-  {
-    id: '1',
-    title: 'Annual Family Picnic 2023',
-    date: '2023-09-15',
-    description: 'A wonderful day of community, food, and fun with our union families.',
-    images: [
-      'https://local229.s3.us-east-1.amazonaws.com/events/picnic1.jpg',
-      'https://local229.s3.us-east-1.amazonaws.com/events/picnic2.jpg',
-      'https://local229.s3.us-east-1.amazonaws.com/events/picnic3.jpg',
-    ],
-    highlights: [
-      'Over 200 members and families attended',
-      'Activities for children of all ages',
-      'Recognition ceremony for long-standing members'
-    ]
-  },
-  // Add more past events...
-]
+
 
 const PastEvents = () => {
   const [currentEventIndex, setCurrentEventIndex] = useState(0)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const currentEvent = pastEvents[currentEventIndex]
+  const [events, setEvents] = useState<Event[]>([])
+  
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const result = await getEvents()
+      // Filter for past events that are highlights
+      const pastHighlights = result.filter(event => {
+        const eventDate = new Date(event.date)
+        return eventDate < new Date() && event.highlight
+      })
+      setEvents(pastHighlights)
+    }
+    fetchEvents()
+  }, [])
+
+  const currentEvent = events[currentEventIndex]
 
   useEffect(() => {
+    if (!currentEvent?.images?.length) return
+    
     const timer = setInterval(() => {
       setCurrentImageIndex((prev) => 
         (prev + 1) % currentEvent.images.length
@@ -48,6 +41,20 @@ const PastEvents = () => {
     }, 5000)
     return () => clearInterval(timer)
   }, [currentEvent])
+
+  // Auto-rotate through events
+  useEffect(() => {
+    if (!events.length) return
+    
+    const timer = setInterval(() => {
+      setCurrentEventIndex((prev) => 
+        (prev + 1) % events.length
+      )
+    }, 15000) // Change event every 15 seconds
+    return () => clearInterval(timer)
+  }, [events.length])
+
+  if (!events.length || !currentEvent) return <div>Loading...</div>
 
   return (
     <section className="py-20 bg-gray-50">
@@ -76,7 +83,7 @@ const PastEvents = () => {
           >
             {currentEvent.images.map((image, index) => (
               <motion.div
-                key={image}
+                key={`${currentEvent.title}-image-${index}`}
                 initial={{ opacity: 0, x: 1000 }}
                 animate={{
                   opacity: currentImageIndex === index ? 1 : 0,
@@ -110,22 +117,14 @@ const PastEvents = () => {
               {new Date(currentEvent.date).toLocaleDateString()}
             </p>
             <p className="text-gray-700 mb-6">
-              {currentEvent.description}
+              {currentEvent.body}
             </p>
-            <div className="space-y-2">
-              {currentEvent.highlights.map((highlight, index) => (
-                <div key={index} className="flex items-center text-gray-700">
-                  <span className="w-2 h-2 bg-[#0a0086] rounded-full mr-3" />
-                  {highlight}
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
 
         {/* Event Navigation */}
         <div className="flex justify-center mt-8 space-x-2">
-          {pastEvents.map((_, index) => (
+          {events.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentEventIndex(index)}

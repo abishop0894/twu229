@@ -1,93 +1,123 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CalendarIcon, MapPinIcon, ClockIcon } from 'lucide-react'
+import { CalendarIcon, MapPinIcon } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import { getEvents, Event } from '@/lib/firebase'
 
 // This interface would match your CMS schema
-interface Event {
-  id: string
-  title: string
-  date: string
-  time: string
-  location: string
-  description: string
-  category: string
-  registrationLink: string
-}
+
 
 // This would come from your CMS
-const upcomingEvents: Event[] = [
-  {
-    id: '1',
-    title: 'Monthly Membership Meeting',
-    date: '2024-04-15',
-    time: '18:00',
-    location: 'Union Hall, Jersey City',
-    description: 'Regular monthly meeting to discuss union business and updates.',
-    category: 'Meeting',
-    registrationLink: '/events/register/1'
-  },
-  // Add more events...
-]
+
 
 const UpcomingEvents = () => {
+  const [currentEventIndex, setCurrentEventIndex] = useState(0)
+  const [events, setEvents] = useState<Event[]>([])
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      const result = await getEvents()
+      // Filter for future events
+      const futureEvents = result.filter(event => {
+        const eventDate = new Date(event.date)
+        return eventDate > new Date()
+      })
+      setEvents(futureEvents)
+    }
+    fetchEvents()
+  }, [])
+
+  // Auto-rotate through events
+  useEffect(() => {
+    if (!events.length) return
+    
+    const timer = setInterval(() => {
+      setCurrentEventIndex((prev) => 
+        (prev + 1) % events.length
+      )
+    }, 5000) // Change event every 5 seconds
+    return () => clearInterval(timer)
+  }, [events.length])
+
+  if (!events.length) return <div>Loading...</div>
+
+  const currentEvent = events[currentEventIndex]
+
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12"
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0a0086] mb-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0a0086] mb-4">
             Upcoming Events
           </h2>
+          <p className="text-lg text-gray-700">
+            Join us at our next union gathering
+          </p>
         </motion.div>
 
-        <div className="grid gap-8">
-          {upcomingEvents.map((event, index) => (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <div className="max-w-3xl mx-auto">
             <motion.div
-              key={event.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-gray-50 rounded-lg p-6 shadow-lg"
+              key={currentEvent.title}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              className="bg-white rounded-lg shadow-xl overflow-hidden"
             >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-[#0a0086] mb-3">
-                    {event.title}
-                  </h3>
-                  <div className="space-y-2">
-                    <div className="flex items-center text-gray-600">
-                      <CalendarIcon className="w-5 h-5 mr-2" />
-                      <span>{new Date(event.date).toLocaleDateString()}</span>
-                    </div>
-                    <div className="flex items-center text-gray-600">
-                      <ClockIcon className="w-5 h-5 mr-2" />
-                      <span>{event.time}</span>
-                    </div>
-                    <div className="flex items-center text-gray-600">
-                      <MapPinIcon className="w-5 h-5 mr-2" />
-                      <span>{event.location}</span>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-gray-700">{event.description}</p>
+              {currentEvent.images.length > 0 && (
+                <div className="relative h-64">
+                  <Image
+                    src={currentEvent.images[0]}
+                    alt={currentEvent.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <div className="mt-6 md:mt-0 md:ml-8">
-                  <a
-                    href={event.registrationLink}
-                    className="inline-block bg-[#0a0086] text-white px-6 py-3 rounded-full hover:bg-blue-900 transition-colors"
-                  >
-                    Register Now
-                  </a>
+              )}
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-[#0a0086] mb-2">
+                  {currentEvent.title}
+                </h3>
+                <div className="flex items-center text-gray-600 mb-4">
+                  <CalendarIcon className="w-5 h-5 mr-2" />
+                  {new Date(currentEvent.date).toLocaleDateString()}
                 </div>
+                <div className="flex items-center text-[#0a0086] mb-4">
+                  <MapPinIcon className="w-5 h-5 mr-2" />
+                  {currentEvent.location}
+                </div>
+                <p className="text-gray-700 mb-6">
+                  {currentEvent.body}
+                </p>
               </div>
             </motion.div>
-          ))}
-        </div>
+          </div>
+
+          {/* Event Navigation */}
+          <div className="flex justify-center mt-8 space-x-2">
+            {events.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentEventIndex(index)}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  currentEventIndex === index ? 'bg-[#0a0086]' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )
