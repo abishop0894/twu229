@@ -2,7 +2,7 @@ import Hero from '@/app/modules/layout/Hero'
 
 import GetInvolved from '@/app/modules/components/polls/GetInvolved'
 
-import { PageLayout } from '@/app/modules/layout/layout-comp'
+import PageLayout from '@/app/modules/layout/layout-comp'
 import Articles from '@/app/modules/components/press/Articles'
 
 
