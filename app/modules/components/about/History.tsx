@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const timelineEvents = [
   {
@@ -27,7 +28,20 @@ const timelineEvents = [
 
 const History = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="relative py-20 bg-transparent">
+      {/* Fixed Background Image */}
+      <div className="fixed inset-0 -z-10">
+        <Image
+          src="https://local229.s3.us-east-1.amazonaws.com/468785464_10162216423483872_5716468660005240735_n-photoaidcom-greyscale.jpg"
+          alt="History Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Semi-transparent overlay */}
+        <div className="absolute inset-0 bg-white/80" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

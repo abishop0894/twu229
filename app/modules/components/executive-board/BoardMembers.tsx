@@ -8,23 +8,45 @@ const boardMembers = [
     name: 'Duane Boone',
     role: 'President',
     image: '/executives/president.jpg',
-    bio: 'Leading TWU Local 229 since 2020, John has been instrumental in securing better working conditions and wages for our members.',
+    bio: 'bio here',
     email: 'president@twulocal229.org'
   },
   {
     name: 'Jose Garcia',
     role: 'Vice President',
     image: '/executives/vice-president.jpg',
-    bio: 'With 15 years of transit experience, Maria focuses on safety initiatives and member education programs.',
+    bio: 'bio here',
     email: 'vp@twulocal229.org'
   },
   {
-    name: 'Charlise Wright',
+    name: 'Kelvin Turner',
     role: 'Secretary-Treasurer',
     image: '/executives/secretary.jpg',
-    bio: 'David manages our financial operations and ensures transparency in all union dealings.',
-    email: 'treasurer@twulocal229.org'
+    bio: 'bio here',
+    email: 'email@twulocal229.org'
   },
+   {
+    name: 'Alex Bishop',
+    role: 'Communications/Media',
+    image: '/executives/secretary.jpg',
+    bio: 'bio here',
+    email: 'email@twulocal229.org'
+  },
+  {
+    name: 'Charlise Wright',
+    role: 'Representative',
+    image: 'https://local229.s3.us-east-1.amazonaws.com/logo.png',
+    bio: 'bio here',
+    email: 'email@twulocal229.org'
+  },
+   {
+    name: 'Chris Rotundo',
+    role: 'Representative',
+    image: 'https://local229.s3.us-east-1.amazonaws.com/logo.png',
+    bio: 'bio here',
+    email: 'email@twulocal229.org'
+  },
+
   // Add more board members as needed
 ]
 
