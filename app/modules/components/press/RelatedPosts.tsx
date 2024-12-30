@@ -12,24 +12,7 @@ interface RelatedPost {
 }
 
 const relatedPosts: RelatedPost[] = [
-  {
-    id: '1',
-    title: 'TWU Local 229 Secures New Safety Measures',
-    image: 'https://local229.s3.us-east-1.amazonaws.com/press-1.jpg',
-    slug: '/press/safety-measures'
-  },
-  {
-    id: '2',
-    title: 'Community Outreach Program Launches',
-    image: 'https://local229.s3.us-east-1.amazonaws.com/press-2.jpg',
-    slug: '/press/community-outreach'
-  },
-  {
-    id: '3',
-    title: 'Member Training Initiative Success',
-    image: 'https://local229.s3.us-east-1.amazonaws.com/press-3.jpg',
-    slug: '/press/training-initiative'
-  }
+
 ]
 
 const RelatedPosts = () => {
@@ -37,7 +20,7 @@ const RelatedPosts = () => {
     <section className="w-[95%] mt-12">
       <h2 className="text-2xl font-bold text-[#0a0086] mb-6">Related Posts</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {relatedPosts.map((post, index) => (
+        {relatedPosts.length > 0 ? relatedPosts.map((post, index) => (
           <motion.div
             key={post.id}
             initial={{ opacity: 0, y: 20 }}
@@ -61,7 +44,11 @@ const RelatedPosts = () => {
               </div>
             </Link>
           </motion.div>
-        ))}
+        )) : (
+          <div className="col-span-3 text-center text-gray-500">
+            No related posts found. Check back soon for more updates!
+          </div>
+        )}
       </div>
     </section>
   )

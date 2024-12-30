@@ -6,13 +6,15 @@ import RelatedPosts from './RelatedPosts'
 
 interface ArticleProps {
   title: string
-  body: string
+  paragraphOne: string
+  paragraphTwo?: string
+  paragraphThree?: string
   image: string
   date: string
-  author: string
+  
 }
 
-const Article = ({ title, body, image, date, author }: ArticleProps) => {
+const Article = ({ title, paragraphOne, paragraphTwo, paragraphThree, image, date }: ArticleProps) => {
   return (
     <div className="flex flex-col items-center w-full py-12">
       <motion.article 
@@ -37,12 +39,18 @@ const Article = ({ title, body, image, date, author }: ArticleProps) => {
             <div className="text-gray-600">
               <span>{date}</span>
               <span className="mx-2">•</span>
-              <span>{author}</span>
+              
             </div>
           </div>
           
-          <div className="prose max-w-none text-gray-700">
-            {body}
+          <div className="prose max-w-none text-xl text-gray-700">
+            {paragraphOne}
+            <br />
+            <br />
+            {paragraphTwo}
+            <br />
+            <br />
+            {paragraphThree}
           </div>
         </div>
       </motion.article>
