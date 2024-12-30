@@ -1,7 +1,7 @@
     import { getArticles } from '@/lib/firebase'
     import Article from '@/app/modules/components/press/Article'
     import { notFound } from 'next/navigation'
-    import { PageLayout } from '@/app/modules/layout/page-comp'
+    import PageLayout from '@/app/modules/layout/layout-comp'
 
     export default async function ArticlePage({ params }: { params: { date: string } }) {
     const articles = await getArticles()

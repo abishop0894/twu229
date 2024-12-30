@@ -4,7 +4,7 @@ import MissionValues from '../modules/components/home/MissionStatement'
 import Impact from '../modules/components/about/Impact'
 import Affiliations from '../modules/components/about/Affiliations'
 import WhyJoinUs from '../modules/components/about/WhyJoinUs'
-import { PageLayout } from '@/app/modules/layout/page-comp'
+import PageLayout from '@/app/modules/layout/layout-comp'
 import MemberHighlight from '../modules/components/about/MemberHighlight'
 import Intro from '../modules/components/about/Intro'
 
