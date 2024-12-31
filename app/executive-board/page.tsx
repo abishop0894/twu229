@@ -9,7 +9,7 @@ export default function ExecutiveBoardPage() {
     hero: {
         title: "Meet Our Leadership",
         description: "Dedicated individuals working tirelessly to represent and protect the interests of our members in Hudson County",
-        image: "https://local229.s3.us-east-1.amazonaws.com/contact-hero.jpg"
+        image: "https://local229.s3.us-east-1.amazonaws.com/presidents.jpg"
     }
     }
  

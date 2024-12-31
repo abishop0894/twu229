@@ -26,6 +26,8 @@ const Navbar = () => {
       children: [
         { href: '/press', label: 'Press' },
         { href: '/events', label: 'Events' },
+        { href: '/photos', label: 'Photos' },
+        { href: '/member-highlights', label: 'Member Highlights' },
       ]
     },
     { href: '/polls', label: 'Polls' },
@@ -70,17 +72,18 @@ const Navbar = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </button>
-                  <div className="absolute left-0 mt-2 w-screen bg-white invisible group-hover:visible transition-all duration-300 shadow-lg -translate-x-1/2 transform">
+                  <div className="absolute left-0 mt-10 w-screen rounded-md bg-[#211887] invisible group-hover:visible transition-all duration-300 shadow-lg -translate-x-1/2 transform">
                     <div className="max-w-7xl mx-auto px-4 py-6">
                       <div className="grid grid-cols-2 gap-8">
                         {link.children?.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="text-[#0a0086] hover:text-[#ffd700] transition-colors duration-500"
+                            className="text-white text-xl  hover:text-[#ffd700] transition-colors duration-500"
                           >
                             {child.label}
-                          </Link>
+                           <hr className="w-[180px] h-[1px] bg-[#ffd700]"/> </Link>
+                        
                         ))}
                       </div>
                     </div>
