@@ -10,7 +10,15 @@ interface SuggestionForm {
   description: string
 }
 
-const GetInvolved = () => {
+interface Props {
+  photo?: boolean
+  highlight?: boolean
+  join?: boolean
+  suggestions?: boolean
+  rsvp?: boolean
+}
+
+const GetInvolved = ({ photo, highlight, join, suggestions, rsvp }: Props) => {
   const [formData, setFormData] = useState<SuggestionForm>({
     name: '',
     email: '',
@@ -18,11 +26,54 @@ const GetInvolved = () => {
     description: ''
   })
 
+  const getFormTitle = () => {
+    if (photo) return "Share Your Moments"
+    if (highlight) return "Be Our Next Member Highlight"
+    if (join) return "Join Local 229"
+    if (suggestions) return "Let Your Voice Be Heard"
+    if (rsvp) return "Join Us At Our Next Event"
+    return "Get Involved"
+  }
+
+  const getFormSubtext = () => {
+    if (photo) return "Want your photos featured in this section? Let us know!"
+    if (highlight) return "Share your story and inspire others"
+    if (join) return "Take the first step towards a stronger future"
+    if (suggestions) return "Suggest topics for future polls and help shape our union's direction"
+    if (rsvp) return "Reserve your spot at our upcoming events"
+    return "Get involved with your union"
+  }
+
+  const getTopicLabel = () => {
+    if (photo) return "Photo Description"
+    if (highlight) return "Years of Service"
+    if (join) return "Current Position"
+    if (suggestions) return "Poll Topic"
+    if (rsvp) return "Event Name"
+    return "Topic"
+  }
+
+  const getDescriptionLabel = () => {
+    if (photo) return "Tell us about your photo"
+    if (highlight) return "Tell us your union story"
+    if (join) return "Why do you want to join?"
+    if (suggestions) return "Why is this topic important?"
+    if (rsvp) return "Any dietary restrictions or special requirements?"
+    return "Description"
+  }
+
+  const getButtonText = () => {
+    if (photo) return "Submit Photo"
+    if (highlight) return "Submit Application"
+    if (join) return "Submit Interest"
+    if (suggestions) return "Submit Suggestion"
+    if (rsvp) return "RSVP Now"
+    return "Submit"
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // This would connect to your API/CMS
-    console.log('Suggestion submitted:', formData)
-    // Reset form after submission
+    console.log('Form submitted:', formData)
     setFormData({
       name: '',
       email: '',
@@ -49,10 +100,10 @@ const GetInvolved = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-[#0a0086] mb-4">
-            Get Involved
+            {getFormTitle()}
           </h2>
           <p className="text-lg text-gray-700">
-            Suggest topics for future polls and help shape our union&apos;s direction
+            {getFormSubtext()}
           </p>
         </motion.div>
 
@@ -92,7 +143,7 @@ const GetInvolved = () => {
           </div>
 
           <div>
-            <label htmlFor="topic" className="block text-gray-700 mb-2">Poll Topic</label>
+            <label htmlFor="topic" className="block text-gray-700 mb-2">{getTopicLabel()}</label>
             <input
               type="text"
               id="topic"
@@ -106,7 +157,7 @@ const GetInvolved = () => {
 
           <div>
             <label htmlFor="description" className="block text-gray-700 mb-2">
-              Why is this topic important?
+              {getDescriptionLabel()}
             </label>
             <textarea
               id="description"
@@ -124,7 +175,7 @@ const GetInvolved = () => {
               type="submit"
               className="bg-[#0a0086] text-white px-8 py-3 rounded-full hover:bg-blue-900 transition-colors"
             >
-              Submit Suggestion
+              {getButtonText()}
             </button>
           </div>
         </motion.form>

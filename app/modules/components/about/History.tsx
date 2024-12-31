@@ -35,7 +35,7 @@ const History = () => {
           src="https://local229.s3.us-east-1.amazonaws.com/468785464_10162216423483872_5716468660005240735_n-photoaidcom-greyscale.jpg"
           alt="History Background"
           fill
-          className="object-cover"
+          className="object-cover "
           priority
         />
         {/* Semi-transparent overlay */}

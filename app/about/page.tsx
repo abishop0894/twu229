@@ -5,13 +5,16 @@ import Impact from '../modules/components/about/Impact'
 import Affiliations from '../modules/components/about/Affiliations'
 import WhyJoinUs from '../modules/components/about/WhyJoinUs'
 import PageLayout from '@/app/modules/layout/layout-comp'
-import MemberHighlight from '../modules/components/about/MemberHighlight'
-import Intro from '../modules/components/about/Intro'
+import GetInvolved from '../modules/components/polls/GetInvolved'
 
 export default function AboutPage() {
   return (
     <PageLayout className="pt-[12vh]">
-      <Hero />
+      <Hero 
+        title="About Us"
+        description="TWU Local 229 is a dedicated union representing workers in the Hudson County area. We are committed to fighting for the rights of our members and advocating for a better future for all."
+        image="https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
+      />
       <History />
       <MissionValues 
         customTitle="Mission & Values"
@@ -21,8 +24,7 @@ export default function AboutPage() {
       <Affiliations />
 
       <WhyJoinUs />
-     <MemberHighlight />
-     <Intro />
+      <GetInvolved join />
     </PageLayout>
   )
 }

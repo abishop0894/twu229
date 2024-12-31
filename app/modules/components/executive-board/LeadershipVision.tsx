@@ -45,7 +45,7 @@ const LeadershipVision = () => {
             className="relative h-[400px] rounded-lg overflow-hidden shadow-xl"
           >
             <Image
-              src="/leadership-vision.jpg"
+              src="https://local229.s3.us-east-1.amazonaws.com/twuBus.jpg"
               alt="TWU Local 229 Leadership Vision"
               fill
               className="object-cover"

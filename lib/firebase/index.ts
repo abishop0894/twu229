@@ -63,3 +63,29 @@
     return articles
     }
 
+    export interface MemberHighlight {
+      firstName: string
+      lastName: string
+      years: number
+      image: string
+
+        questionOne: string
+        questionTwo: string
+        questionThree: string
+        questionFour: string
+        answerOne: string
+        answerTwo: string
+        answerThree: string
+        answerFour: string
+      
+    }
+
+    export async function getMemberHighlight(): Promise<MemberHighlight> {
+      const db = getFirestore(app)
+      const memberHighlightCollection = collection(db, 'memberHighlight')
+      const memberSnapshot = await getDocs(memberHighlightCollection)
+      
+      const member = memberSnapshot.docs[0].data() as MemberHighlight
+      return member
+    }
+
