@@ -12,7 +12,7 @@ const pageData = {
   hero: {
     title: "Press Releases",
     description: "Stay up-to-date with the latest news and updates about Local 229. Our press releases provide important information about our union's activities, achievements, and advocacy efforts.",
-    image: "https://local229.s3.us-east-1.amazonaws.com/press-hero.jpg"
+    image: "https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
   }
 }
 

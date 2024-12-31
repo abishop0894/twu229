@@ -12,7 +12,7 @@ const pageData = {
   hero: {
     title: "Weekly Member Polls",
     description: "Your voice matters. Participate in our weekly polls to help shape the direction of our union and make your opinion count.",
-    image: "https://local229.s3.us-east-1.amazonaws.com/polls-hero.jpg"
+    image: "https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
   }
 }
 

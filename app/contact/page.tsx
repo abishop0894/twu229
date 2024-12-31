@@ -9,7 +9,7 @@
     hero: {
         title: "We're Here to Help",
         description: "Get in touch with TWU Local 229. We're ready to assist with any questions or concerns you may have.",
-        image: "https://local229.s3.us-east-1.amazonaws.com/contact-hero.jpg"
+        image: "https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
     }
     }
 
