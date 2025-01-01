@@ -62,6 +62,21 @@ const NewsUpdates = () => {
             )
           })}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center mt-12"
+        >
+          <Link
+            href="/press"
+            className="inline-block bg-[#0a0086] text-white px-8 py-3 rounded-full hover:bg-blue-900 transition-colors text-lg font-medium"
+          >
+            View All Press Releases
+          </Link>
+        </motion.div>
       </div>
     </section>
   )
