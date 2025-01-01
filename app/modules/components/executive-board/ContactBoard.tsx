@@ -11,10 +11,44 @@ const ContactBoard = () => {
     message: ''
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission logic here
-    console.log('Form submitted:', formData)
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3_KEY,
+          subject: `Executive Board Contact - ${formData.subject}`,
+          from_name: formData.name,
+          email: formData.email,
+          message: `
+            Name: ${formData.name}
+            Email: ${formData.email}
+            Subject: ${formData.subject}
+            Message: ${formData.message}
+          `
+        }),
+      })
+
+      if (response.ok) {
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        })
+        // Could add success message UI here
+      } else {
+        throw new Error('Failed to send message')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      // Could add error message UI here
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -38,7 +72,7 @@ const ContactBoard = () => {
             Contact the Board
           </h2>
           <p className="text-lg text-gray-700">
-            Have questions or concerns? We arehere to listen and help.
+            Have questions or concerns? We are here to listen and help.
           </p>
         </motion.div>
 

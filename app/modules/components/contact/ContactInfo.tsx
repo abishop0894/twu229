@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Mail, Clock } from 'lucide-react'
 
 // This would come from your CMS
 const contactDetails = {
@@ -30,13 +30,6 @@ const ContactInfo = () => {
           </div>
         </div>
 
-        <div className="flex items-start space-x-4">
-          <Phone className="w-6 h-6 text-[#0a0086] flex-shrink-0 mt-1" />
-          <div>
-            <h3 className="font-semibold text-gray-900">Phone</h3>
-            <p className="text-gray-600">{contactDetails.phone}</p>
-          </div>
-        </div>
 
         <div className="flex items-start space-x-4">
           <Mail className="w-6 h-6 text-[#0a0086] flex-shrink-0 mt-1" />
