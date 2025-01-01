@@ -12,7 +12,7 @@ export default function AboutPage() {
     <PageLayout className="pt-[12vh]">
       <Hero 
         title="About Us"
-        description="TWU Local 229 is a dedicated union representing workers in the Hudson County area. We are committed to fighting for the rights of our members and advocating for a better future for all."
+        description="TWU Local 229 is a dedicated union representing employees of the Hudson Bergen Light Rail. We are committed to fighting for the rights of our members and advocating for a better future for all."
         image="https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
       />
       <History />

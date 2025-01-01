@@ -7,8 +7,8 @@ import Image from 'next/image'
 interface Photo {
   src: string
   alt: string
-  title?: string
-  subtitle?: string
+  title?: string | false
+  subtitle?: string | false
 }
 
 const ImageCarousel = ({ photos }: { photos: Photo[] }) => {

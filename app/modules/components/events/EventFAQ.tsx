@@ -16,7 +16,7 @@ const faqs: FAQ[] = [
   {
     id: '1',
     question: 'How do I register for an event?',
-    answer: 'You can register for events through our online registration form above. Make sure to have your membership number ready.',
+    answer: 'You can register for events through our online registration form above.',
     category: 'registration'
   },
   {
@@ -34,7 +34,7 @@ const faqs: FAQ[] = [
   {
     id: '4',
     question: 'Are there any costs associated with events?',
-    answer: 'Most union meetings and training sessions are free for members. Special events may have a nominal fee, which will be clearly indicated during registration.',
+    answer: 'Most union meetings are free for members. Special events may have a nominal fee, which will be clearly indicated during registration.',
     category: 'general'
   }
 ]
