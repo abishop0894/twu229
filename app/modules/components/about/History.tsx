@@ -12,12 +12,12 @@ const timelineEvents = [
   {
     year: '2010s',
     title: 'Growth Period',
-    description: 'Expansion of membership and influence in Hudson County.'
+    description: 'Expansion of membership and influence at HBLR.'
   },
   {
     year: '2020s',
     title: 'Modern Era',
-    description: 'Adaptation to new transit technologies and worker needs.'
+    description: 'Adaptation to ridership increase from transit oriented development and worker needs.'
   },
   {
     year: 'Today',

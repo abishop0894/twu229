@@ -84,17 +84,7 @@ const WhyJoinUs = () => {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="text-center mt-12"
-        >
-          <button className="bg-[#0a0086] text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-blue-900 transition-colors">
-            Join Today
-          </button>
-        </motion.div>
+       
       </div>
     </section>
   )

@@ -3,12 +3,29 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import { FaPlay, FaPause, FaHandPointer } from "react-icons/fa6";
 
 interface Photo {
   src: string
   alt: string
   title?: string | false
   subtitle?: string | false
+}
+
+const tapIconVariants = {
+  initial: { 
+    opacity: 0,
+    scale: 0.8,
+  },
+  animate: { 
+    opacity: [0, 1, 1, 0],
+    scale: [0.8, 1, 1, 0.8],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      repeatDelay: 1
+    }
+  }
 }
 
 const ImageCarousel = ({ photos }: { photos: Photo[] }) => {
@@ -60,7 +77,16 @@ const ImageCarousel = ({ photos }: { photos: Photo[] }) => {
                 className="object-contain rounded-lg "
                 priority={index === currentIndex}
               />
-            
+              {index === currentIndex && (
+                <motion.div
+                  className="absolute inset-0 top-[2vh] right-[2vh] flex items-center justify-center z-10 pointer-events-none"
+                  variants={tapIconVariants}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <FaHandPointer className="text-white text-4xl drop-shadow-lg" />
+                </motion.div>
+              )}
             </motion.div>
           ))}
         </div>
@@ -82,7 +108,7 @@ const ImageCarousel = ({ photos }: { photos: Photo[] }) => {
             onClick={() => setIsPlaying(!isPlaying)}
             className="p-3 rounded-full bg-white/20 backdrop-blur-md text-white hover:bg-white/30 transition-colors"
           >
-            {isPlaying ? '⏸' : '▶'}
+            {isPlaying ? <FaPause /> : <FaPlay />}
           </motion.button>
 
           <motion.button
