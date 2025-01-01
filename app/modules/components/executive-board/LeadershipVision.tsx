@@ -19,8 +19,7 @@ const LeadershipVision = () => {
             </h2>
             <div className="space-y-4 text-gray-700">
               <p>
-                At TWU Local 229, we envision a future where every transit worker in 
-                Hudson County enjoys fair wages, comprehensive benefits, and safe working 
+                At TWU Local 229, we envision a future where every employee at HBLR enjoys fair wages, comprehensive benefits, and safe working 
                 conditions. Our leadership team is committed to:
               </p>
               <ul className="list-disc list-inside space-y-2 ml-4">
@@ -32,7 +31,7 @@ const LeadershipVision = () => {
               </ul>
               <p>
                 Together, we are  building a stronger union that serves its members and 
-                contributes to the growth of Hudson Countys transit system.
+                contributes to the growth of HBLR.
               </p>
             </div>
           </motion.div>

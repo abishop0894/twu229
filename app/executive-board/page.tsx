@@ -8,7 +8,7 @@ export default function ExecutiveBoardPage() {
  const pageData = {
     hero: {
         title: "Meet Our Leadership",
-        description: "Dedicated individuals working tirelessly to represent and protect the interests of our members in Hudson County",
+        description: "Dedicated individuals working tirelessly to represent and protect the interests of our members at the Hudson Bergen Light Rail",
         image: "https://local229.s3.us-east-1.amazonaws.com/presidents.jpg"
     }
     }

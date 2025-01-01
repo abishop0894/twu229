@@ -17,8 +17,8 @@ const MissionStatement = ({ customTitle, customDescription }: { customTitle?: st
             {customTitle || 'Our Mission'}
           </h2>
           <p className="text-lg text-gray-700 leading-relaxed">
-            {customDescription || `Transport Workers Union Local 229 is dedicated to protecting and improving the lives of transit workers 
-            in Hudson County. We fight for fair wages, safe working conditions, and dignity on the job. Through 
+            {customDescription || `Transport Workers Union Local 229 is dedicated to protecting and improving the lives of HBLR employees. 
+            We fight for fair wages, safe working conditions, and dignity on the job. Through 
             collective action and solidarity, we ensure that our members voices are heard and their rights are 
             protected.`}
           </p>
