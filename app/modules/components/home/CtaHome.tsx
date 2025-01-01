@@ -2,6 +2,7 @@
 import { motion } from "framer-motion"
 import Image from 'next/image'
 import Link from 'next/link'
+import { FaArrowRightLong } from "react-icons/fa6";
 
 export const CTASection = () => {
   return (
@@ -24,8 +25,8 @@ export const CTASection = () => {
         <div className="w-full lg:w-1/2 bg-[#0a0086] p-12 lg:p-20 flex flex-col justify-center">
           <h3 className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">Our Story</h3>
           <p className="text-white/90 mb-8 text-xl md:text-2xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Learn about our history, mission, and the people who make Local 229 strong.</p>
-          <Link href="/about" className="text-white text-lg font-semibold hover:text-[#f5cc00] transition-colors">
-            Learn More →
+          <Link href="/about" className="text-white text-xl font-semibold hover:text-[#f5cc00] transition-colors flex items-center gap-2">
+            Learn More <FaArrowRightLong className="ml-2" />
           </Link>
         </div>
       </motion.div>
@@ -46,10 +47,10 @@ export const CTASection = () => {
           />
         </div>
         <div className="w-full lg:w-1/2 bg-[#f5cc00] p-12 lg:p-20 flex flex-col justify-center">
-          <h3 className="text-4xl md:text-5xl font-bold text-[#0a0086] mb-6 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">Member Spotlight</h3>
+          <h3 className="text-4xl md:text-5xl font-bold text-[#0a0086] mb-6 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">Member Highlight</h3>
           <p className="text-[#0a0086]/90 mb-8 text-xl md:text-2xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Meet our featured member and discover their unique HBLR journey.</p>
-          <Link href="/about#member-highlight" className="text-[#0a0086] text-lg font-semibold hover:text-white transition-colors">
-            Meet Them →
+          <Link href="/member-highlights" className="text-[#0a0086] text-xl font-semibold hover:text-white transition-colors flex items-center gap-2">
+            Meet Them <FaArrowRightLong className="ml-2" />
           </Link>
         </div>
       </motion.div>
@@ -63,17 +64,17 @@ export const CTASection = () => {
       >
         <div className="w-full lg:w-1/2 h-[400px] lg:h-[600px] relative">
           <Image
-            src="https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
+            src="https://local229.s3.us-east-1.amazonaws.com/memberscarousel/member9.jpg"
             alt="TWU Local 229 Photos"
             fill
-            className="object-cover"
+            className="object-cover object-top"
           />
         </div>
         <div className="w-full lg:w-1/2 bg-gray-50 p-12 lg:p-20 flex flex-col justify-center">
           <h3 className="text-4xl md:text-5xl font-bold text-[#0a0086] mb-6 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">Photo Gallery</h3>
           <p className="text-gray-600 mb-8 text-xl md:text-2xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Browse through moments captured by our members across HBLR.</p>
-          <Link href="/photos" className="text-[#0a0086] text-lg font-semibold hover:text-blue-700 transition-colors">
-            View Gallery →
+          <Link href="/photos" className="text-[#0a0086] text-xl font-semibold hover:text-blue-700 transition-colors flex items-center gap-2">
+            View Gallery <FaArrowRightLong className="ml-2" />
           </Link>
         </div>
       </motion.div>
@@ -116,8 +117,8 @@ export const CTASection = () => {
           <p className="text-white/90 mb-8 text-xl md:text-2xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
             Participate in our polls and help shape the future of our union.
           </p>
-          <Link href="/polls" className="text-white font-semibold hover:text-[#f5cc00] transition-colors">
-            Vote Now →
+          <Link href="/polls" className="text-white text-xl font-semibold hover:text-[#f5cc00] transition-colors flex items-center gap-2">
+            Vote Now <FaArrowRightLong className="ml-2" />
           </Link>
         </div>
       </motion.div>

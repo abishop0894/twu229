@@ -8,7 +8,7 @@ import ConstructionModal from '../modules/components/shared/ConstructionModal'
 const pageData = {
   hero: {
     title: "Weekly Member Polls",
-    description: "Your voice matters. Participate in our weekly polls to help shape the direction of our union and make your opinion count.",
+    description: "Your voice matters. Participate in our monthly polls to help shape the direction of our union and make your opinion count.",
     image: "https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
   }
 }
@@ -24,7 +24,7 @@ export default function PollsContent() {
         image={pageData.hero.image}
       />
       <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col items-center justify-center min-h-[50vh]">
-        <h2 className="text-3xl font-bold text-[#0a0086] mb-8">Weekly Poll Questionnaire</h2>
+        <h2 className="text-3xl font-bold text-center text-[#0a0086] mb-8">Monthly Poll Questionnaire</h2>
         <button
           onClick={() => setIsModalOpen(true)}
           className="px-8 py-4 bg-[#0a0086] text-white rounded-lg hover:bg-blue-900 transition-colors text-lg font-medium"

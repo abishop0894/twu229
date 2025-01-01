@@ -18,7 +18,7 @@ export default function AboutPage() {
       <History />
       <MissionValues 
         customTitle="Mission & Values"
-        customDescription="TWU Local 229 stands on the principles of solidarity, fairness, and worker empowerment. Our mission extends beyond traditional union representation to building a stronger, more equitable transit system for all of Hudson County."
+        customDescription="TWU Local 229 stands on the principles of solidarity, fairness, and worker empowerment. Our mission extends beyond traditional union representation to building a stronger, more equitable transit system for our members, non-unionized HBLR employees, and communities we serve in Hudson County."
       />
       <Impact />
       <Affiliations />
