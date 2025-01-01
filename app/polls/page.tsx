@@ -3,11 +3,8 @@ import Hero from '@/app/modules/layout/Hero'
 import PollFAQ from '@/app/modules/components/polls/PollFAQ'
 import PageLayout from '@/app/modules/layout/layout-comp'
 import { useState } from 'react'
-import OtpModal from '@/app/modules/components/polls/OtpModal'
-import SurveyComponent from '../modules/components/polls/SurveyComponent'
-import { useVerification, VerificationProvider } from '../modules/components/polls/context/verification'
+import ConstructionModal from '../modules/components/shared/ConstructionModal'
 
-// This would come from your CMS
 const pageData = {
   hero: {
     title: "Weekly Member Polls",
@@ -16,9 +13,8 @@ const pageData = {
   }
 }
 
-function PollsContent() {
+export default function PollsContent() {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { verificationStatus } = useVerification()
   
   return (
     <PageLayout className="pt-[12vh]">
@@ -27,7 +23,7 @@ function PollsContent() {
         description={pageData.hero.description}
         image={pageData.hero.image}
       />
-      {verificationStatus !== 'approved' && <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col items-center justify-center min-h-[50vh]">
+      <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col items-center justify-center min-h-[50vh]">
         <h2 className="text-3xl font-bold text-[#0a0086] mb-8">Weekly Poll Questionnaire</h2>
         <button
           onClick={() => setIsModalOpen(true)}
@@ -35,17 +31,9 @@ function PollsContent() {
         >
           Start Survey 
         </button>
-      </div> }
-      {verificationStatus === 'approved' ? <SurveyComponent /> : <OtpModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />}
+      </div>
+      <ConstructionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <PollFAQ />
     </PageLayout>
-  )
-}
-
-export default function PollsPage() {
-  return (
-    <VerificationProvider>
-      <PollsContent />
-    </VerificationProvider>
   )
 } 

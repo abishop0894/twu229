@@ -1,7 +1,22 @@
 import Link from 'next/link'
+import ComingSoonModal from '../components/shared/ComingSoonModal'
+import ConstructionModal from '../components/shared/ConstructionModal'
+import { useState } from 'react'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isSubscribeModalOpen, setIsSubscribeModalOpen] = useState(false)
+
+  const handleSocialClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setIsModalOpen(true)
+  }
+
+  const handleSubscribeClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setIsSubscribeModalOpen(true)
+  }
 
   return (
     <footer className="bg-[#0a0086] text-white">
@@ -33,9 +48,9 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-[#ffd700]">Facebook</a>
-              <a href="#" className="hover:text-[#ffd700]">Twitter</a>
-              <a href="#" className="hover:text-[#ffd700]">Instagram</a>
+              <a  onClick={handleSocialClick} className="hover:text-[#ffd700]">Facebook</a>
+              <a  onClick={handleSocialClick} className="hover:text-[#ffd700]">Twitter</a>
+              <a  onClick={handleSocialClick} className="hover:text-[#ffd700]">Instagram</a>
             </div>
           </div>
 
@@ -49,7 +64,7 @@ const Footer = () => {
                 className="w-full px-3 py-2 text-gray-800 rounded"
               />
               <button
-                type="submit"
+                onClick={handleSubscribeClick}
                 className="w-full bg-[#ffd700] text-[#0a0086] px-4 py-2 rounded font-bold hover:bg-yellow-400 transition-colors"
               >
                 Subscribe
@@ -63,6 +78,8 @@ const Footer = () => {
           <p>&copy; {currentYear} TWU Local 229. All rights reserved.</p>
         </div>
       </div>
+      <ComingSoonModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ConstructionModal isOpen={isSubscribeModalOpen} onClose={() => setIsSubscribeModalOpen(false)} />
     </footer>
   )
 }

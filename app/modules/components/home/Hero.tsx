@@ -79,16 +79,17 @@ const Hero = () => {
         >
           Transport Workers Union Local 229
         </motion.p>
-        <motion.button
+        <motion.a
           className="bg-[#ffd700] text-[#0a0086] px-8 py-3 rounded-full text-lg font-bold hover:bg-yellow-400 transition-colors"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          href="/about"
         >
-          Join Us Today
-        </motion.button>
+          Learn More
+        </motion.a>
       </div>
     </section>
   )

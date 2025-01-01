@@ -55,21 +55,14 @@ const GetInvolved = ({ photo, highlight, join, suggestions, rsvp }: Props) => {
 
   const getDescriptionLabel = () => {
     if (photo) return "Tell us about your photo"
-    if (highlight) return "Tell us your union story"
+    if (highlight) return "Tell us your HBLR story"
     if (join) return "Why do you want to join?"
     if (suggestions) return "Why is this topic important?"
-    if (rsvp) return "Any dietary restrictions or special requirements?"
+    if (rsvp) return "Message"
     return "Description"
   }
 
-  const getButtonText = () => {
-    if (photo) return "Submit Photo"
-    if (highlight) return "Submit Application"
-    if (join) return "Submit Interest"
-    if (suggestions) return "Submit Suggestion"
-    if (rsvp) return "RSVP Now"
-    return "Submit"
-  }
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -175,7 +168,7 @@ const GetInvolved = ({ photo, highlight, join, suggestions, rsvp }: Props) => {
               type="submit"
               className="bg-[#0a0086] text-white px-8 py-3 rounded-full hover:bg-blue-900 transition-colors"
             >
-              {getButtonText()}
+              Submit
             </button>
           </div>
         </motion.form>

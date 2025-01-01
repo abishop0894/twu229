@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const PageLayout = ({ children, className }: {children : React.ReactNode, className?: string}) => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
       <Navbar />
       <AnimatePresence mode="wait">
         <motion.main
