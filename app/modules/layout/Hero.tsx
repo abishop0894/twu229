@@ -45,7 +45,7 @@ const Hero = ({ title, description, image }: { title?: string; description?: str
               src={image || "https://local229.s3.us-east-1.amazonaws.com/TWU_Invincible.jpg"}
               alt="TWU Local 229 History"
               fill
-              className="object-cover"
+              className="object-contain"
             />
           </motion.div>
         </div>

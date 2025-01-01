@@ -5,11 +5,12 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 
 // This would come from your CMS
 const contactDetails = {
-  address: '123 Union Street, Jersey City, NJ 07302',
+  address: '50 Harrison Street, Hoboken, NJ 07030',
   phone: '(201) 555-0123',
   email: 'info@twulocal229.org',
   hours: 'Monday - Friday: 9:00 AM - 5:00 PM'
 }
+
 
 const ContactInfo = () => {
   return (

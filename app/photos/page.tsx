@@ -14,45 +14,44 @@ const carouselImages = [
 
   {
     src: "https://local229.s3.us-east-1.amazonaws.com/memberscarousel/member4.jpg",
-    title: "Member Name",
-        subtitle: "Member Position",
-    alt: "Member Name"
+    title: "John Yurick",
+    subtitle: "Signal",
+    alt: "John Yurick"
   },
   {
     src: "https://local229.s3.us-east-1.amazonaws.com/memberscarousel/member5.jpg",
-    title: "Member Name",
-    subtitle: "Member Position",
-    alt: "Member Name"
+    title: "D'Andre Watson",
+    subtitle: "Facility Maintainer",
+    alt: "D'Andre Watson"
   },
   {
     src: "https://local229.s3.us-east-1.amazonaws.com/memberscarousel/member6.jpg",
-    title: "Member Name",
-    subtitle: "Member Position",
-    alt: "Member Name"
+    title: "Quadir Gallemore",
+    subtitle: "Utility",
+    alt: "Quadir Gallemore"
   },
   {
     src: "https://local229.s3.us-east-1.amazonaws.com/memberscarousel/member7.jpg",
-    title: "Member Name",
-    subtitle: "Member Position",
-    alt: "Member Name"
+    title: "Edward Pfister",
+    subtitle: "Facility Maintainer",
+    alt: "Edward Pfister"
   },
   {
     src: "https://local229.s3.us-east-1.amazonaws.com/memberscarousel/member8.jpg",
-    title: "Member Name",
-    subtitle: "Member Position",
-    alt: "Member Name"
+    title: "Pete Carino",
+    subtitle: "Track",
+    alt: "Pete Carino"
   },
   {
     src: "https://local229.s3.us-east-1.amazonaws.com/memberscarousel/member9.jpg",
-    title: "Member Name",
-    subtitle: "Member Position",
-    alt: "Member Name"
+    
+    alt: "Phil Aliotta"
   },
   {
     src: "https://local229.s3.us-east-1.amazonaws.com/memberscarousel/member10.jpg",
-    title: "Member Name",
-    subtitle: "Member Position",
-    alt: "Member Name"
+    title: "Phil Aliotta ",
+    subtitle: "Train Operator",
+    alt: "Phil Aliotta"
   }
 ]
 

@@ -28,7 +28,7 @@ const faqs: FAQ[] = [
   {
     id: '3',
     question: 'When are new polls released?',
-    answer: 'New polls are typically released every Monday morning and remain open for one week.',
+    answer: 'New polls are typically released the first week of each month and remain open for the duration of the month.',
     category: 'schedule'
   },
   {
