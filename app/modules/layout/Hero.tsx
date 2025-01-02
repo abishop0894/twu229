@@ -12,7 +12,7 @@ const Hero = ({ title, description, image }: { title?: string; description?: str
           src={"https://local229.s3.us-east-1.amazonaws.com/hblrnight.jpg"}
           alt="Background"
           fill
-          className="object-cover"
+          className="object-cover "
         />
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0086]/90 to-blue-900/90" />
@@ -39,13 +39,13 @@ const Hero = ({ title, description, image }: { title?: string; description?: str
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative h-[400px] rounded-lg overflow-hidden shadow-xl"
+            className="relative h-[400px] rounded-lg overflow-hidden"
           >
             <Image
               src={image || "https://local229.s3.us-east-1.amazonaws.com/TWU_Invincible.jpg"}
               alt="TWU Local 229 History"
               fill
-              className="object-contain"
+              className="object-contain rounded-lg"
             />
           </motion.div>
         </div>
