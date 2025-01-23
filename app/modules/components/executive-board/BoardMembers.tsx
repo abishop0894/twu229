@@ -47,13 +47,7 @@
       bio: 'bio here',
       email: 'info@twulocal229.org'
     },
-    {
-      name: 'Chris Rotondo',
-      role: 'Representative',
-      image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
-      bio: 'bio here',
-      email: 'info@twulocal229.org'
-    },
+   
 
     // Add more board members as needed
   ]
