@@ -6,8 +6,15 @@
 
   const boardMembers = [
     {
+      name: 'Steve Hamm',
+      role: 'President',
+      image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
+      bio: 'bio here',
+      email: 'info@twulocal229.org'
+    },
+    {
       name: 'Duane Boone',
-      role: 'Acting President',
+      role: 'Vice President of MOW',
       image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
       bio: 'bio here',
       email: 'info@twulocal229.org'
