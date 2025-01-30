@@ -50,7 +50,7 @@ const PastEvents = () => {
       setCurrentEventIndex((prev) => 
         (prev + 1) % events.length
       )
-    }, 15000) // Change event every 15 seconds
+    }, 100000) // Change event every 100 seconds
     return () => clearInterval(timer)
   }, [events.length])
 
