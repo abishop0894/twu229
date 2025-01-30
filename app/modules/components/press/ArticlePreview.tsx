@@ -54,7 +54,7 @@
             </div>
             <Link
                 href={`/press/${formattedDate}`}
-                className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 px-3 py-1.5 sm:px-4 sm:py-2 bg-[#0a0086] text-white text-sm sm:text-base rounded-lg hover:bg-blue-900 transition-colors"
+                className="absolute bottom-4 mt-[2vh] mb-[2vh] right-4 sm:bottom-6 sm:right-6 px-3 py-1.5 sm:px-4 sm:py-2 bg-[#0a0086] text-white text-sm sm:text-base rounded-lg hover:bg-blue-900 transition-colors"
             >
                 Read More
             </Link>
