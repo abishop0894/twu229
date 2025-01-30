@@ -39,7 +39,6 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>50 Harrison Street</li>
               <li>Hoboken, NJ 07030</li>
-              <li>Phone: (201) 555-0123</li>
               <li>Email: info@twulocal229.org</li>
             </ul>
           </div>
