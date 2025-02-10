@@ -26,3 +26,5 @@ export default function ExecutiveBoardPage() {
     </PageLayout>
   )
 } 
+
+//updates
