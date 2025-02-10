@@ -52,7 +52,37 @@ const carouselImages = [
     title: "Phil Aliotta ",
     subtitle: "Train Operator",
     alt: "Phil Aliotta"
-  }
+  },
+  {
+    src: "https://local229.s3.us-east-1.amazonaws.com/gallery/edison2.jpg",
+    
+    alt: "Edison Nanan"
+  },
+  {
+    src: "https://local229.s3.us-east-1.amazonaws.com/gallery/edison.jpg",
+    title: "Edison Nanan",
+    subtitle: "Train Operator",
+    alt: "Edison Nanan"
+  },
+  {
+    src: "https://local229.s3.us-east-1.amazonaws.com/gallery/peguero.jpg",
+    title: "Jeremiah Peguero",
+    subtitle: "Train Operator",
+    alt: "Jeremiah Peguero"
+  },
+  {
+    src: "https://local229.s3.us-east-1.amazonaws.com/gallery/reva.jpg",
+    title: "Reva Stridiron",
+    subtitle: "Train Operator",
+    alt: "Reva Stridiron"
+  },
+  {
+    src: "https://local229.s3.us-east-1.amazonaws.com/gallery/trav.jpg",
+    title: "Travis Griffin",
+    subtitle: "Train Operator",
+    alt: "Travis Griffin"
+  },
+
 ]
 
     return (
