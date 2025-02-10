@@ -2,8 +2,7 @@
 import Hero from '@/app/modules/layout/Hero'
 import PollFAQ from '@/app/modules/components/polls/PollFAQ'
 import PageLayout from '@/app/modules/layout/layout-comp'
-import { useState } from 'react'
-import ConstructionModal from '../modules/components/shared/ConstructionModal'
+import { useRouter } from 'next/navigation'
 
 const pageData = {
   hero: {
@@ -14,7 +13,7 @@ const pageData = {
 }
 
 export default function PollsContent() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const router = useRouter()
   
   return (
     <PageLayout className="pt-[12vh]">
@@ -26,13 +25,12 @@ export default function PollsContent() {
       <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col items-center justify-center min-h-[50vh]">
         <h2 className="text-3xl font-bold text-center text-[#0a0086] mb-8">Monthly Poll Questionnaire</h2>
         <button
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => router.push('/polls/survey')}
           className="px-8 py-4 bg-[#0a0086] text-white rounded-lg hover:bg-blue-900 transition-colors text-lg font-medium"
         >
           Start Survey 
         </button>
       </div>
-      <ConstructionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <PollFAQ />
     </PageLayout>
   )

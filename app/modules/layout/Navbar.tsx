@@ -6,6 +6,12 @@ import Image from 'next/image'
 import { motion } from 'motion/react'
 import { Fade as Hamburger } from 'hamburger-react'
 import { Plus, Minus } from 'lucide-react'
+import { UserButton } from '@clerk/nextjs'
+import { SignedOut} from '@clerk/nextjs'
+import { SignedIn } from '@clerk/nextjs'
+
+import { SignInButton } from '@clerk/nextjs'
+          
 
 interface NavLink {
   href?: string;
@@ -40,8 +46,17 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-[13vh]">
           {/* Logo Container */}
           <div className="relative lg:mt-[7vh] mt-[3vh]">
-            <Link href="/" className="flex flex-col items-center bg-white text-[#0a0086] lg:px-8 px-2 md:pt-[10vh] pt-6 pb-8 rounded-b-[100px] shadow-[0_10px_20px_rgba(0,0,0,0.25)]">
-              <span className="text-lg font-bold">Local 229</span>
+            <Link href="/" className="flex flex-col items-center max-w-fit bg-white text-[#0a0086] lg:px-2 px-2 md:pt-[10vh] pt-6 pb-2 rounded-b-[100px] shadow-[0_10px_20px_rgba(0,0,0,0.25)]">
+                <span 
+      className="text-lg font-bold relative"
+      style={{
+        color: '#ffd700',
+        WebkitTextStroke: '1px #0a0086', // light gray
+        stroke: '1px #0a0086'  // light gray
+      }}
+    >
+      Local 229
+    </span>
               <div className="lg:w-[160px] lg:h-[160px] w-[90px] h-[90px] relative">
                 <Image
                   src="https://local229.s3.us-east-1.amazonaws.com/twuBig.png"
@@ -55,6 +70,10 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
+                     
+         
+       
+
             {navLinks.map((link) => (
               'children' in link ? (
                 <div key={link.label} className="relative group">
@@ -75,6 +94,10 @@ const Navbar = () => {
                   <div className="absolute left-0 mt-10 w-screen rounded-md bg-[#211887] invisible group-hover:visible transition-all duration-300 shadow-lg -translate-x-1/2 transform">
                     <div className="max-w-7xl mx-auto px-4 py-6">
                       <div className="grid grid-cols-2 gap-8">
+                      
+                
+          
+
                         {link.children?.map((child) => (
                           <Link
                             key={child.href}
@@ -99,10 +122,30 @@ const Navbar = () => {
                 </Link>
               )
             ))}
+   <SignedOut>
+              <SignInButton  >
+                <button className="text-white hover:text-[#ffd700] text-lg transition-colors duration-500">
+                  Sign In
+                </button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex justify-center items-center">
+              <SignedOut>
+              <SignInButton  >
+                <button className="text-white hover:text-[#ffd700] text-lg transition-colors duration-500">
+                  Sign In
+                </button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
             <Hamburger toggled={isOpen} toggle={setIsOpen} color="white" size={24} />
           </div>
         </div>
@@ -120,6 +163,10 @@ const Navbar = () => {
             className="md:hidden h-screen opacity-90"
           >
             <div className="px-2 pt-[8vh] pb-3 flex flex-col items-start space-y-1">
+                      
+          
+         
+
               {navLinks.map((link) => (
                 'children' in link ? (
                   <div key={link.label} className="w-full flex justify-start items-start flex-col">

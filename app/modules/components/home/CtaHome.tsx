@@ -141,20 +141,20 @@ export const CTASection = () => {
           />
         </motion.div>
         <motion.div 
-          className="w-full lg:w-1/2 bg-gray-50 p-12 lg:p-20 flex flex-col justify-center"
+          className="w-full lg:w-1/2 bg-[#0a0086] p-12 lg:p-20 flex flex-col justify-center"
           variants={textContainerVariants}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
         >
-          <motion.h3 variants={textItemVariants} className="text-4xl md:text-5xl font-bold text-[#0a0086] mb-6 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
+          <motion.h3 variants={textItemVariants} className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
             Photo Gallery
           </motion.h3>
-          <motion.p variants={textItemVariants} className="text-gray-600 mb-8 text-xl md:text-2xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
+          <motion.p variants={textItemVariants} className="text-white mb-8 text-xl md:text-2xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
             Browse through moments captured by our members across HBLR.
           </motion.p>
           <motion.div variants={textItemVariants}>
-            <Link href="/photos" className="text-[#0a0086] text-xl font-semibold hover:text-blue-700 transition-colors flex items-center gap-2">
+            <Link href="/photos" className="text-white text-xl font-semibold hover:text-[#f5cc00] transition-colors flex items-center gap-2">
               View Gallery <FaArrowRightLong className="ml-2" />
             </Link>
           </motion.div>
@@ -193,20 +193,20 @@ export const CTASection = () => {
           </motion.div>
         </div>
         <motion.div 
-          className="w-full lg:w-1/2 bg-[#0a0086] p-12 lg:p-20 flex flex-col justify-center"
+          className="w-full lg:w-1/2 bg-[#f5cc00] p-12 lg:p-20 flex flex-col justify-center"
           variants={textContainerVariants}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
         >
-          <motion.h3 variants={textItemVariants} className="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
+          <motion.h3 variants={textItemVariants} className="text-4xl md:text-5xl font-bold text-[#0a0086] mb-6 drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
             Have Your Say
           </motion.h3>
-          <motion.p variants={textItemVariants} className="text-white/90 mb-8 text-xl md:text-2xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
+          <motion.p variants={textItemVariants} className="text-[#0a0086] mb-8 text-xl md:text-2xl drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">
             Participate in our polls and help shape the future of our union.
           </motion.p>
           <motion.div variants={textItemVariants}>
-            <Link href="/polls" className="text-white text-xl font-semibold hover:text-[#f5cc00] transition-colors flex items-center gap-2">
+            <Link href="/polls" className="text-[#0a0086] text-xl font-semibold hover:text-white transition-colors flex items-center gap-2">
               Vote Now <FaArrowRightLong className="ml-2" />
             </Link>
           </motion.div>
