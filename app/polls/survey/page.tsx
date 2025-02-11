@@ -10,7 +10,7 @@ export default function SurveyPage() {
   return (
   
 
-      <PageLayout className="">
+      <PageLayout className="pt-[19vh]">
         <SignedIn>
           <SurveyComponent />
           <PollResults />
