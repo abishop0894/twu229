@@ -6,7 +6,7 @@
 
   const boardMembers = [
     {
-      name: 'Steve Hamm',
+      name: 'Steven Hamm',
       role: 'President',
       image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
       bio: 'bio here',

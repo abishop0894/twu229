@@ -1,4 +1,4 @@
-    import { getFirestore, collection, getDocs } from 'firebase/firestore'
+    import { getFirestore, collection, getDocs, doc, setDoc, serverTimestamp } from 'firebase/firestore'
     import { app } from './firebase'
 
     export interface Event {
@@ -89,3 +89,31 @@
       return member
     }
 
+
+    export type Survey = {
+     dateEnding: Date
+     question: string[],
+     answerChoices: { [key: string]: string }[] // or Record<string, string>[] to be more specific
+    }
+
+    export async function getSurvey(): Promise<Survey> {
+      const db = getFirestore(app)
+      const surveyCollection = collection(db, 'survey')
+      const surveySnapshot = await getDocs(surveyCollection)
+      const survey = surveySnapshot.docs[0].data() as Survey
+      return survey
+    }
+
+    interface SurveyResponse {
+      id: string
+      responses: Record<number, string>
+    }
+
+    export async function submitSurveyResponse(response: SurveyResponse) {
+      const db = getFirestore(app)
+      const docRef = doc(db, 'surveyResults', response.id)
+      await setDoc(docRef, {
+        responses: response.responses,
+        timestamp: serverTimestamp()
+      })
+    }
