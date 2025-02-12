@@ -41,6 +41,7 @@ export default function OtpModal({ isOpen, onClose }: OtpModalProps) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+
         },
         body: JSON.stringify({ phoneNumber: parsedNumber }),
       })
