@@ -1,11 +1,12 @@
 "use client"
 
-import PollResults from "@/app/modules/components/polls/PollResults";
+// import PollResults from "@/app/modules/components/polls/PollResults";
 import GetInvolved from "@/app/modules/components/polls/GetInvolved";
 import  SurveyComponent  from "@/app/modules/components/polls/SurveyComponent";
 import PageLayout from "@/app/modules/layout/layout-comp";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import Image from "next/image";
+import CommentSection from "@/app/modules/components/polls/CommentSection";
 export default function SurveyPage() {
   return (
   
@@ -13,13 +14,14 @@ export default function SurveyPage() {
       <PageLayout className="pt-[19vh]">
         <SignedIn>
           <SurveyComponent />
-          <PollResults />
+          {/* <PollResults /> */}
+          <CommentSection  />
           <GetInvolved />   
         </SignedIn>
         <SignedOut>
     
           <div className="flex flex-col  items-center justify-center h-screen">
-            <div className="absolute inset-0 w-full h-screen">
+            <div className="absolute inset-0 w-full h-[110vh]">
               <Image 
                 src="https://local229.s3.us-east-1.amazonaws.com/polls/hblr-train-approaching-the-essex-street-station-in-jersey-city-shutterstock-scaled.jpg"
                 alt="HBLR Train Background"
