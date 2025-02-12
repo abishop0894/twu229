@@ -20,8 +20,8 @@ export default function SurveyPage() {
         </SignedIn>
         <SignedOut>
     
-          <div className="flex flex-col  items-center justify-center h-screen">
-            <div className="absolute inset-0 w-full h-[110vh]">
+          <div className="flex flex-col  items-center justify-center h-full">
+            <div className="absolute inset-0 w-full h-[120vh]">
               <Image 
                 src="https://local229.s3.us-east-1.amazonaws.com/polls/hblr-train-approaching-the-essex-street-station-in-jersey-city-shutterstock-scaled.jpg"
                 alt="HBLR Train Background"
