@@ -67,7 +67,7 @@ const CommentSection = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto mt-8">
+    <div className="max-w-2xl mx-auto mt-8 p-4">
       {/* Comment Input */}
       <form onSubmit={handleSubmitComment} className="mb-8">
         <textarea
