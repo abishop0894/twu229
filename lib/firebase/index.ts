@@ -1,4 +1,4 @@
-    import { getFirestore, collection, getDocs, doc, setDoc, serverTimestamp } from 'firebase/firestore'
+    import { getFirestore, collection, getDocs, doc, setDoc, serverTimestamp, getDoc, updateDoc } from 'firebase/firestore'
     import { app } from './firebase'
 
     export interface Event {
@@ -107,6 +107,7 @@
     interface SurveyResponse {
       id: string
       responses: Record<number, string>
+      email: string | undefined
     }
 
     export async function submitSurveyResponse(response: SurveyResponse) {
@@ -114,6 +115,59 @@
       const docRef = doc(db, 'surveyResults', response.id)
       await setDoc(docRef, {
         responses: response.responses,
+        email: response.email,
         timestamp: serverTimestamp()
+      })
+    }
+
+    export interface Comment {
+      id: string
+      text: string
+      userEmail: string
+      userAvatar: string
+      userName: string
+      timestamp: string
+      likes: number
+      likedBy: string[]
+    }
+
+    export const addComment = async (comment: Omit<Comment, 'id'>) => {
+      const db = getFirestore(app)
+      const commentsCollection = collection(db, 'comments')
+      const newCommentRef = doc(commentsCollection)
+      
+      await setDoc(newCommentRef, {
+        ...comment,
+        id: newCommentRef.id,
+        timestamp: serverTimestamp()
+      })
+    }
+
+    export const getComments = async (): Promise<Comment[]> => {
+      const db = getFirestore(app)
+      const commentsCollection = collection(db, 'comments')
+      const commentSnapshot = await getDocs(commentsCollection)
+      
+      return commentSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      })) as Comment[]
+    }
+
+    export const updateCommentLikes = async (commentId: string, userEmail: string) => {
+      const db = getFirestore(app)
+      const commentRef = doc(db, 'comments', commentId)
+      const commentDoc = await getDoc(commentRef)
+      
+      if (!commentDoc.exists()) return
+      
+      const comment = commentDoc.data() as Comment
+      const isLiked = comment.likedBy.includes(userEmail)
+      
+      await updateDoc(commentRef, {
+        likes: isLiked ? comment.likes - 1 : comment.likes + 1,
+        likedBy: isLiked 
+          ? comment.likedBy.filter(email => email !== userEmail)
+          : [...comment.likedBy, userEmail]
       })
     }

@@ -4,6 +4,7 @@ import { getSurvey } from "@/lib/firebase"
 import { useState, useEffect, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { submitSurveyResponse } from "@/lib/firebase"
+import { useUser } from "@clerk/nextjs"
 
 interface Survey {
   dateEnding: Date
@@ -17,6 +18,16 @@ function SurveyComponent() {
   const [responses, setResponses] = useState<Record<number, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
+  const { user } = useUser()
+
+// Get primary email
+  const userEmail = user?.primaryEmailAddress?.emailAddress;
+  
+ 
+
+
+
+
 
   const isComplete = useMemo(() => {
     if (!survey) return false
@@ -37,6 +48,7 @@ function SurveyComponent() {
     try {
       await submitSurveyResponse({
         id: crypto.randomUUID(),
+        email: userEmail,
         responses
       })
       setShowSuccess(true)
