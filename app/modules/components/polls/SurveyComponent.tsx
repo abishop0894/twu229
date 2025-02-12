@@ -106,7 +106,7 @@ function SurveyComponent() {
         <button
           onClick={() => setCurrentQuestionIndex(prev => Math.min(survey.question.length - 1, prev + 1))}
           disabled={currentQuestionIndex === survey.question.length - 1}
-          className="px-4 py-2 bg-[#0a0086] text-white rounded disabled:opacity-50"
+          className={`px-4 py-2 bg-[#0a0086] text-white rounded disabled:opacity-50`}
         >
           Next
         </button>
