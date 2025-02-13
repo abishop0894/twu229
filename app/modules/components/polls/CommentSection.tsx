@@ -110,7 +110,7 @@ const CommentSection = () => {
                     <div>
                       <p className="font-semibold">{comment.userName}</p>
                       <p className="text-sm text-gray-500">
-                        {new Date(comment.timestamp).toLocaleDateString()}
+                        {String(comment.timestamp)}
                       </p>
                     </div>
                     <button
