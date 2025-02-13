@@ -12,7 +12,7 @@ import GetInvolved from '@/app/modules/components/polls/GetInvolved'
 
 export default function Home() {
   return (
-    <PageLayout>
+    <PageLayout className="overflow-x-hidden">
       <Hero />
       <MissionStatement />
       <ExecutiveBoard />

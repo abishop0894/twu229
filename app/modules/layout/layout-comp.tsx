@@ -19,7 +19,7 @@ const PageLayout = ({ children, className }: {children : React.ReactNode, classN
             duration: 0.3,
             ease: "easeInOut"
           }}
-          className={`flex-grow ${className}`}
+          className={`flex-grow ${className} overflow-x-hidden`}
         >
           {children}
         </motion.main>
