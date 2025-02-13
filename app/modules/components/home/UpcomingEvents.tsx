@@ -58,7 +58,7 @@ const UpcomingEvents = () => {
                 {event.title}
               </h3>
               <p className="text-gray-600 mb-2">{event.location}</p>
-              <p className="text-gray-700 mb-4">{event.body}</p>
+              <p className="text-gray-700 mb-4 text-wrap break-words whitespace-pre-wrap">{event.body}</p>
               <Link
                 href="/events"
                 className="text-[#0a0086] hover:text-blue-900 font-semibold"
