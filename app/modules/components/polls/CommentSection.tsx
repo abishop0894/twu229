@@ -28,7 +28,7 @@ const CommentSection = () => {
 
     setIsSubmitting(true)
     try {
-      const newComment = {
+      await addComment({
         text: commentText.trim(),
         userEmail: user.primaryEmailAddress?.emailAddress || '',
         userAvatar: user.imageUrl || '',
@@ -36,9 +36,7 @@ const CommentSection = () => {
         timestamp: new Date().toISOString(),
         likes: 0,
         likedBy: []
-      }
-
-      await addComment(newComment)
+      })
       
       // Refresh comments
       const updatedComments = await getComments()
@@ -110,7 +108,7 @@ const CommentSection = () => {
                     <div>
                       <p className="font-semibold">{comment.userName}</p>
                       <p className="text-sm text-gray-500">
-                        {String(comment.timestamp)}
+                        {comment.timestamp}
                       </p>
                     </div>
                     <button
