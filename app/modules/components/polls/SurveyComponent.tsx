@@ -67,7 +67,7 @@ function SurveyComponent() {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold text-[#0a0086] mb-8">{`${survey.dateEnding}`}</h1>
+      <h1 className="text-2xl font-bold text-[#0a0086] mb-8">{`Survey`}</h1>
       
       <AnimatePresence mode="wait">
         <motion.div
