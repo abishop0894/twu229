@@ -11,7 +11,9 @@ interface TopicPageProps {
 export default async function TopicPage({ params }: TopicPageProps) {
   return (
     <div className="container mx-auto px-4 py-8">
+  
       <Suspense fallback={<div>Loading...</div>}>
+
         <TopicView topicId={params.id} />
       </Suspense>
     </div>

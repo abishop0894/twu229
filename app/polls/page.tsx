@@ -34,7 +34,7 @@ export default function PollsContent() {
       <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col items-center justify-center min-h-[50vh]">
         <h2 className="text-3xl font-bold text-center text-[#0a0086] mb-8">229Talk</h2>
         <button
-          onClick={() => router.push('/polls/survey')}
+          onClick={() => router.push('/polls/localtalk')}
           className="px-8 py-4 bg-[#0a0086] text-white rounded-lg hover:bg-blue-900 transition-colors text-lg font-medium"
         >
           229Talk
