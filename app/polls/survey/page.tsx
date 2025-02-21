@@ -6,7 +6,7 @@ import  SurveyComponent  from "@/app/modules/components/polls/SurveyComponent";
 import PageLayout from "@/app/modules/layout/layout-comp";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import Image from "next/image";
-
+import SurveyResults from "@/app/modules/components/survey/SurveyResults";
 export default function SurveyPage() {
   return (
   
@@ -15,12 +15,12 @@ export default function SurveyPage() {
         <SignedIn>
           <SurveyComponent />
           {/* <PollResults /> */}
-          
+          <SurveyResults />
           <GetInvolved />   
         </SignedIn>
         <SignedOut>
     
-          <div className="flex flex-col  items-center justify-center h-full">
+          <div className="flex flex-col  items-center justify-center h-[120vh]">
             <div className="absolute inset-0 w-full h-[120vh]">
               <Image 
                 src="https://local229.s3.us-east-1.amazonaws.com/polls/hblr-train-approaching-the-essex-street-station-in-jersey-city-shutterstock-scaled.jpg"

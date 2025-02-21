@@ -99,6 +99,7 @@ export default function TopicCreationForm() {
         } : {})
       })
 
+    
       // Reset form
       setForm({ title: '', content: '', category: 'transportation' })
       setMedia(null)
@@ -108,8 +109,10 @@ export default function TopicCreationForm() {
       setError('Failed to create topic. Please try again.')
       console.error('Error creating topic:', err)
     } finally {
+
       setIsSubmitting(false)
     }
+   window.location.reload()
   }
 
   return (
