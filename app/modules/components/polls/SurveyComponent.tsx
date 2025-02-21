@@ -5,6 +5,8 @@ import { useState, useEffect, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { submitSurveyResponse } from "@/lib/firebase"
 import { useUser } from "@clerk/nextjs"
+import { collection, query, where, getDocs } from 'firebase/firestore'
+import { db } from '@/lib/firebase/firebase'
 
 interface Survey {
   dateEnding: Date
@@ -18,16 +20,26 @@ function SurveyComponent() {
   const [responses, setResponses] = useState<Record<number, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
+  const [hasSubmitted, setHasSubmitted] = useState<boolean | null>(null)
   const { user } = useUser()
 
-// Get primary email
   const userEmail = user?.primaryEmailAddress?.emailAddress;
-  
- 
 
+  useEffect(() => {
+    const checkPreviousSubmission = async () => {
+      if (!userEmail) return;
+      
+      const q = query(
+        collection(db, 'surveyResults'),
+        where('email', '==', userEmail)
+      );
+      
+      const snapshot = await getDocs(q);
+      setHasSubmitted(!snapshot.empty);
+    };
 
-
-
+    checkPreviousSubmission();
+  }, [userEmail]);
 
   const isComplete = useMemo(() => {
     if (!survey) return false
@@ -52,12 +64,33 @@ function SurveyComponent() {
         responses
       })
       setShowSuccess(true)
+      setHasSubmitted(true)
       setTimeout(() => setShowSuccess(false), 3000)
     } catch (error) {
       console.error(error)
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  if (!user) {
+    return (
+      <div className="max-w-2xl mx-auto p-6 text-center">
+        <h2 className="text-xl font-bold text-[#0a0086]">Please sign in to participate in the survey</h2>
+      </div>
+    );
+  }
+
+  if (hasSubmitted === null) {
+    return <div className="max-w-2xl mx-auto p-6 text-center">Loading...</div>;
+  }
+
+  if (hasSubmitted) {
+    return (
+      <div className="max-w-2xl mx-auto p-6 text-center">
+        <h2 className="text-xl font-bold text-[#0a0086]">Thank you for your submission!</h2>
+      </div>
+    );
   }
 
   if (!survey) return <div>Loading...</div>
