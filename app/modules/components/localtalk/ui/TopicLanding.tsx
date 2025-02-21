@@ -70,7 +70,7 @@ export default function TopicLanding() {
   )
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 mb-[5vh]">
       {/* Filter Bar */}
       <div className="sticky top-0 z-10 bg-white shadow-md p-4 rounded-lg">
         <div className="flex flex-wrap gap-4 items-center">
