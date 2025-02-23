@@ -25,7 +25,7 @@ export interface Comment {
   userAvatar: string
   content: string
   timestamp: Timestamp
-  parentCommentId: string | null
+  parentCommentId: string | undefined
   replyToUser: string | null
   replyChain: string[]
 }
