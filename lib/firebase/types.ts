@@ -25,8 +25,11 @@ export interface Comment {
   userAvatar: string
   content: string
   timestamp: Timestamp
-  parentCommentId: string | null
-  replyToUser: string | null
+  topicId: string
+  parentCommentId?: string
+  replyToUser?: string
+  isCollapsed?: boolean
+  replies: Comment[]
   replyChain: string[]
 }
 

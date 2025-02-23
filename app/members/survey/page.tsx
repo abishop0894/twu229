@@ -7,6 +7,7 @@ import PageLayout from "@/app/modules/layout/layout-comp";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import Image from "next/image";
 import SurveyResults from "@/app/modules/components/survey/SurveyResults";
+import PollFAQ from "@/app/modules/components/polls/PollFAQ";
 export default function SurveyPage() {
   return (
   
@@ -16,6 +17,7 @@ export default function SurveyPage() {
           <SurveyComponent />
           {/* <PollResults /> */}
           <SurveyResults />
+             <PollFAQ />
           <GetInvolved />   
         </SignedIn>
         <SignedOut>
