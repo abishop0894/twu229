@@ -19,15 +19,14 @@ export interface Topic {
 
 export interface Comment {
   id: string
-  topicId: string
   userId: string
   username: string
   userAvatar: string
   content: string
   timestamp: Timestamp
   topicId: string
-  parentCommentId?: string
-  replyToUser?: string
+  parentCommentId: string | null
+  replyToUser: string | null
   isCollapsed?: boolean
   replies: Comment[]
   replyChain: string[]
