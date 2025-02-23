@@ -132,7 +132,7 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
 export default function CommentSection({ topicId }: { topicId: string }) {
   const userData = useUserData()
   const [comments, setComments] = useState<Comment[]>([])
-  const [replyTo, setReplyTo] = useState<{ id: string; username: string } | undefined>(undefined)
+  const [replyTo, setReplyTo] = useState<{ id: string; username: string } | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -223,7 +223,7 @@ export default function CommentSection({ topicId }: { topicId: string }) {
             topicId={topicId}
             currentUser={userData}
             replyTo={replyTo}
-            onCancelReply={() => setReplyTo(undefined)}
+            onCancelReply={() => setReplyTo(null)}
           />
         </div>
       )}
