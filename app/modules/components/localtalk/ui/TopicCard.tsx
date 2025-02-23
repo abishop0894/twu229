@@ -64,7 +64,7 @@ export default function TopicCard({ topic, onPress }: TopicCardProps) {
         </span>
         <div className="flex items-center space-x-2 text-gray-500">
           <MessageCircle size={18} />
-          <span>{topic.commentCount}</span>
+          <span>{topic.commentCount} {topic.commentCount === 1 ? 'comment' : 'comments'}</span>
         </div>
       </div>
     </div>
