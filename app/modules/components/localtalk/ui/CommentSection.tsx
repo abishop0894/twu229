@@ -13,13 +13,15 @@ import CommentForm from './CommentForm'
 import { deleteComment } from '@/lib/firebase/operations'
 
 interface CommentThreadProps {
-  comment: Comment
+  comment: Comment & { replies: Comment[] }
   level?: number
   onReply: (commentId: string, username: string) => void
   currentUserId?: string
 }
 
 const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentThreadProps) => {
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  
   const handleDelete = async () => {
     if (!confirm('Are you sure you want to delete this comment?')) return
     try {
@@ -33,10 +35,9 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`pl-${level * 8} border-l-2 border-gray-100`}
+      className={`pl-${level > 0 ? '4 md:pl-8' : '0'} ${level > 0 ? 'border-l-2 border-gray-100' : ''}`}
     >
-      <div className="p-4 bg-white rounded-lg shadow-sm">
-        {/* Author Info */}
+      <div className={`p-4 bg-white rounded-lg ${level === 0 ? 'shadow-sm' : ''}`}>
         <div className="flex items-center space-x-3 mb-2">
           <Image
             src={comment.userAvatar}
@@ -45,25 +46,41 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
             height={32}
             className="rounded-full"
           />
-          <div>
+          <div className="flex-grow">
             <span className="font-medium">{comment.username}</span>
             <time className="text-sm text-gray-500 ml-2">
               {formatDistanceToNow(comment.timestamp.toDate(), { addSuffix: true })}
             </time>
           </div>
+          {comment.replies?.length > 0 && (
+            <button
+              onClick={() => setIsCollapsed(!isCollapsed)}
+              className="text-gray-500 hover:text-blue-500 flex items-center space-x-1 p-1 rounded-full hover:bg-gray-100"
+            >
+              {isCollapsed ? (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v12M6 12h12" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 12h12" />
+                </svg>
+              )}
+              <span className="text-sm hidden sm:inline">
+                {comment.replies.length} {comment.replies.length === 1 ? 'reply' : 'replies'}
+              </span>
+            </button>
+          )}
         </div>
 
-        {/* Reply Context */}
         {comment.replyToUser && (
           <div className="text-sm text-gray-500 mb-2">
             Replying to @{comment.replyToUser}
           </div>
         )}
 
-        {/* Content */}
-        <p className="text-gray-700 mb-3">{comment.content}</p>
+        <p className="text-gray-700 mb-3 break-words">{comment.content}</p>
 
-        {/* Actions */}
         <div className="flex items-center space-x-4 text-sm">
           <button
             onClick={() => onReply(comment.id, comment.username)}
@@ -83,6 +100,30 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
             </button>
           )}
         </div>
+
+        {comment.replies?.length > 0 && (
+          <AnimatePresence>
+            {!isCollapsed && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="mt-4 space-y-4"
+              >
+                {comment.replies.map(reply => (
+                  <CommentThread
+                    key={reply.id}
+                    comment={reply as Comment & { replies: Comment[] }}
+                    level={level + 1}
+                    onReply={onReply}
+                    currentUserId={currentUserId}
+                  />
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        )}
       </div>
     </motion.div>
   )
@@ -156,13 +197,6 @@ export default function CommentSection({ topicId }: { topicId: string }) {
         onReply={(id, username) => setReplyTo({ id, username })}
         currentUserId={userData?.id}
       />
-      {comment.replies.length > 0 && (
-        <div className="ml-8 space-y-4">
-          {comment.replies.map(reply =>
-            renderCommentThread(reply as Comment & { replies: Comment[] }, level + 1)
-          )}
-        </div>
-      )}
     </div>
   )
 
