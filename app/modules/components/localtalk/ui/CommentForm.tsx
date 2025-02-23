@@ -35,8 +35,8 @@ export default function CommentForm({
         userAvatar: currentUser.imageUrl,
         content: content.trim(),
         timestamp: Timestamp.now(),
-        parentCommentId: replyTo?.id || undefined,
-        replyToUser: replyTo?.username || undefined,
+        parentCommentId: replyTo?.id || null,
+        replyToUser: replyTo?.username || null,
         replyChain: []
       })
 
