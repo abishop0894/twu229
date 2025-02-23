@@ -9,7 +9,7 @@ import { Timestamp } from 'firebase/firestore'
 interface CommentFormProps {
   topicId: string
   currentUser: ClerkUser
-  replyTo: { id: string; username: string } | null
+  replyTo: { id: string; username: string } | undefined
   onCancelReply: () => void
 }
 
