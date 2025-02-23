@@ -36,7 +36,7 @@ export default function CommentForm({
         content: content.trim(),
         timestamp: Timestamp.now(),
         parentCommentId: replyTo?.id || undefined,
-        replyToUser: replyTo?.username || undefined,
+        replyToUser: replyTo?.username || null,
         replyChain: []
       })
 
