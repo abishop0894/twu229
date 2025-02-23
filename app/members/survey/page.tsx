@@ -28,7 +28,7 @@ export default function SurveyPage() {
                 src="https://local229.s3.us-east-1.amazonaws.com/polls/hblr-train-approaching-the-essex-street-station-in-jersey-city-shutterstock-scaled.jpg"
                 alt="HBLR Train Background"
                 fill
-                className="object-cover h-[120vh] -z-10"
+                className="object-cover h-[120vh] mt-[14vh] -z-10"
               />
               <div className="absolute inset-0 bg-[#0a0086] opacity-60" />
             </div>
