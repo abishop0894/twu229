@@ -35,18 +35,12 @@
     },
     {
       name: 'Alex Bishop',
-      role: 'Communications/Media',
+      role: 'Executive / Media & Communications',
       image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
       bio: 'bio here',
       email: 'info@twulocal229.org'
     },
-    {
-      name: 'Charlise Wright',
-      role: 'Representative',
-      image: 'https://local229.s3.us-east-1.amazonaws.com/twuBig.png',
-      bio: 'bio here',
-      email: 'info@twulocal229.org'
-    },
+    
    
 
     // Add more board members as needed

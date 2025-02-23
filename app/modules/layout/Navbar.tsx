@@ -36,7 +36,7 @@ const Navbar = () => {
         { href: '/member-highlights', label: 'Member Highlights' },
       ]
     },
-    { href: '/polls', label: 'Polls' },
+    { href: '/members', label: 'Members' },
     { href: '/contact', label: 'Contact' }
   ]
 
