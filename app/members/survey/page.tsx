@@ -20,7 +20,7 @@ export default function SurveyPage() {
              <PollFAQ />
           <GetInvolved />   
         </SignedIn>
-        <SignInSection />
+        <SignInSection polls={true} />
       </PageLayout>
    
 

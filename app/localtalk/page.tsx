@@ -17,7 +17,7 @@ export default function LocalTalkPage() {
             <TopicLanding />
           </TopicProvider>
         </SignedIn>
-        <SignInSection />
+        <SignInSection polls={false} />
       </div>
     </PageLayout>
   )
