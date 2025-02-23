@@ -31,13 +31,14 @@ export default function CommentForm({
       await createComment({
         topicId,
         userId: currentUser.id,
-        username: currentUser.firstName,
+        username: currentUser.firstName + ' ' + currentUser.lastName,
         userAvatar: currentUser.imageUrl,
         content: content.trim(),
         timestamp: Timestamp.now(),
         parentCommentId: replyTo?.id || null,
         replyToUser: replyTo?.username || null,
-        replyChain: []
+        replyChain: [],
+        likes: []
       })
 
       setContent('')

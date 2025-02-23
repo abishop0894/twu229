@@ -28,6 +28,7 @@ export interface Comment {
   parentCommentId: string | null
   replyToUser: string | null
   replyChain: string[]
+  likes: string[] // Array of user IDs who liked the comment
 }
 
 // Utility types for Firebase operations

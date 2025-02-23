@@ -111,4 +111,18 @@ export const deleteComment = async (commentId: string, userId: string) => {
   await updateDoc(doc(db, 'topics', comment.topicId), {
     commentCount: increment(-1)
   })
+}
+
+export const toggleCommentLike = async (commentId: string, userId: string) => {
+  const comment = await getComment(commentId)
+  if (!comment) throw new Error('Comment not found')
+  
+  const likes = comment.likes || []
+  const isLiked = likes.includes(userId)
+  
+  await updateDoc(doc(commentsCollection, commentId), {
+    likes: isLiked 
+      ? likes.filter(id => id !== userId)
+      : [...likes, userId]
+  })
 } 
