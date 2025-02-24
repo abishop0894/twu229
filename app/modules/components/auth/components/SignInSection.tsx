@@ -17,7 +17,7 @@ const SignInSection = ({polls} : {polls: boolean}) => {
               <div className="absolute inset-0 bg-[#0a0086] opacity-60" />
             </div>
             <h1 className="text-2xl font-bold text-center text-white z-40">
-              Please <span className="text-[#f5cc00]"><SignInButton>sign in</SignInButton></span> to {polls ? "view polls and statistics" : "view surveys and participate in discussions"} 
+              Please <span className="text-[#f5cc00]"><SignInButton>sign in</SignInButton></span> to {polls ? "view polls and statistics" : "participate in discussions"} 
             </h1>
           </div>
         </SignedOut>
