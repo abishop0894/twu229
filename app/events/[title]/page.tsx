@@ -7,6 +7,7 @@ import { Event } from '@/lib/firebase'
 import PageLayout from '@/app/modules/layout/layout-comp'
 import { getEvents } from '@/lib/firebase'
 
+
 export default function EventPage({ params }: { params: { title: string } }) {
   const [event, setEvent] = useState<Event | null>(null)
 
@@ -60,23 +61,37 @@ export default function EventPage({ params }: { params: { title: string } }) {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {event.images.map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative aspect-square rounded-lg overflow-hidden"
-              >
-                <Image
-                  src={image}
-                  alt={`${event.title} - Image ${index + 1}`}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </motion.div>
-            ))}
+            {event.images.map((media, index) => {
+              const isVideo = media.toLowerCase().endsWith('.mp4')
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative aspect-square rounded-lg overflow-hidden"
+                >
+                  {isVideo ? (
+                    <video
+                      src={media}
+                      className="w-full h-full object-cover object-center"
+                      autoPlay
+                    
+                       controls
+                    />
+                  ) : (
+                    <Image
+                      src={media}
+                      alt={`${event.title} - Image ${index + 1}`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  )}
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>

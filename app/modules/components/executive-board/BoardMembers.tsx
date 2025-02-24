@@ -76,7 +76,7 @@
             
                   <a
                     href={`mailto:${member.email}`}
-                    className="text-[#0a0086] hover:text-blue-900 font-semibold"
+                    className="text-[#0a0086] hover:text-blue-900 flex flex-row items-center gap-3 font-semibold"
                   >
                     Contact <FaEnvelope className="ml-2" />
                   </a>
