@@ -227,7 +227,7 @@ export const CTASection = () => {
           viewport={{ once: true }}
         >
           <Image
-            src="https://local229.s3.us-east-1.amazonaws.com/229.png"
+            src="https://local229.s3.us-east-1.amazonaws.com/229+(1).png"
             alt="TWU Local 229 Photos"
             fill
             className="object-cover object-top"
