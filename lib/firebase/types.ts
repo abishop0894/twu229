@@ -11,7 +11,9 @@ export interface Topic {
   title: string
   content: string
   category: Category
+
   mediaUrl?: string | null
+
   mediaType?: MediaType
   timestamp: Timestamp
   commentCount: number

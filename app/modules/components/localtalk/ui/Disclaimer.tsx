@@ -56,7 +56,7 @@ export default function Disclaimer() {
               </h2>
             </div>
           </div>
-            
+
           {/* Scrollable Content */}
           <div className="p-6 overflow-y-auto flex-1">
             <ul className="space-y-4">

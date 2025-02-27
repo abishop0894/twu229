@@ -44,6 +44,7 @@ const LikeModal = ({ likes, onClose, userInfo }: LikeModalProps) => (
       </div>
       <div className="p-4">
         {likes.map(userId => (
+
           <div key={userId} className="py-2 flex items-center space-x-3">
             {userInfo[userId] ? (
               <>
@@ -65,6 +66,7 @@ const LikeModal = ({ likes, onClose, userInfo }: LikeModalProps) => (
               </div>
             )}
           </div>
+
         ))}
       </div>
     </div>
@@ -75,7 +77,9 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [showLikes, setShowLikes] = useState(false)
   const [userInfo, setUserInfo] = useState<{ [key: string]: UserInfo }>({})
+
   const userData = useUserData()
+
   
   const handleDelete = async () => {
     if (!confirm('Are you sure you want to delete this comment?')) return
@@ -87,6 +91,7 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
   }
 
   const handleLike = async () => {
+
     if (!currentUserId || !userData) return
     
     try {
@@ -100,6 +105,7 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
           imageUrl: userData.imageUrl
         }
       }))
+
     } catch (error) {
       console.error('Error toggling like:', error)
     }
@@ -108,6 +114,7 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
   useEffect(() => {
     const fetchUserInfo = async () => {
       if (!comment.likes?.length) return
+
       
       const newUserInfo: { [key: string]: UserInfo } = {}
       
@@ -146,6 +153,7 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
 
     fetchUserInfo()
   }, [comment.likes, userData])
+
 
   return (
     <motion.div
