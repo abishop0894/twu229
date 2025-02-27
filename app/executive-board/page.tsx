@@ -3,6 +3,7 @@ import BoardMembers from '@/app/modules/components/executive-board/BoardMembers'
 import LeadershipVision from '@/app/modules/components/executive-board/LeadershipVision'
 import ContactBoard from '@/app/modules/components/executive-board/ContactBoard'
 import PageLayout from '@/app/modules/layout/layout-comp'
+import { SignedOut } from '@clerk/nextjs'
 
 export default function ExecutiveBoardPage() {
  const pageData = {
@@ -14,6 +15,7 @@ export default function ExecutiveBoardPage() {
     }
  
     return (
+      <SignedOut>
     <PageLayout className="pt-[12vh]">
       <Hero 
         title={pageData.hero.title}
@@ -24,6 +26,7 @@ export default function ExecutiveBoardPage() {
       <LeadershipVision />
       <ContactBoard />
     </PageLayout>
+    </SignedOut>
   )
 } 
 
