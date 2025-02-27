@@ -104,7 +104,7 @@ const MembersCta = () => {
             src="https://local229.s3.us-east-1.amazonaws.com/229+(1).png"
             alt="TWU Local 229 Photos"
             fill
-            className="object-cover object-top"
+            className="object-cover object-center"
           />
         </motion.div>
         <motion.div 

@@ -12,12 +12,14 @@ export const uploadToS3 = async (file: File, folder: string = 'topics'): Promise
   const fileExtension = file.name.split('.').pop()
   const fileName = `${folder}/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExtension}`
   
+  const arrayBuffer = await file.arrayBuffer()
+  const buffer = Buffer.from(arrayBuffer)
+
   const command = new PutObjectCommand({
     Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME!,
     Key: fileName,
-    Body: file,
-    ContentType: file.type,
-    ACL: 'public-read'
+    Body: buffer,
+    ContentType: file.type
   })
 
   await s3Client.send(command)

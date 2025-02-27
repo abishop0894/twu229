@@ -77,8 +77,6 @@ export default function EventPage({ params }: { params: { title: string } }) {
                     <video
                       src={media}
                       className="w-full h-full object-cover object-center"
-                      autoPlay
-                    
                        controls
                     />
                   ) : (
