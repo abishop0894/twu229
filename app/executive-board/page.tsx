@@ -4,6 +4,7 @@ import LeadershipVision from '@/app/modules/components/executive-board/Leadershi
 import ContactBoard from '@/app/modules/components/executive-board/ContactBoard'
 import PageLayout from '@/app/modules/layout/layout-comp'
 
+
 export default function ExecutiveBoardPage() {
  const pageData = {
     hero: {

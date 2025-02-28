@@ -44,18 +44,27 @@ const LikeModal = ({ likes, onClose, userInfo }: LikeModalProps) => (
       </div>
       <div className="p-4">
         {likes.map(userId => (
-          <button key={userId} className="flex items-center space-x-3 py-2 w-full hover:bg-gray-50">
-            <Image
-              src={userInfo[userId]?.imageUrl || '/default-avatar.png'}
-              alt="User avatar"
-              width={32}
-              height={32}
-              className="rounded-full"
-            />
-            <span className="font-medium">
-              {userInfo[userId] ? `${userInfo[userId].firstName} ${userInfo[userId].lastName}` : 'Unknown User'}
-            </span>
-          </button>
+          <div key={userId} className="py-2 flex items-center space-x-3">
+            {userInfo[userId] ? (
+              <>
+                <Image
+                  src={userInfo[userId].imageUrl}
+                  alt={`${userInfo[userId].firstName} ${userInfo[userId].lastName}`}
+                  width={32}
+                  height={32}
+                  className="rounded-full"
+                />
+                <span className="font-medium">
+                  {`${userInfo[userId].firstName} ${userInfo[userId].lastName}`}
+                </span>
+              </>
+            ) : (
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-gray-200 rounded-full animate-pulse" />
+                <div className="w-32 h-4 bg-gray-200 rounded animate-pulse" />
+              </div>
+            )}
+          </div>
         ))}
       </div>
     </div>
@@ -66,6 +75,8 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [showLikes, setShowLikes] = useState(false)
   const [userInfo, setUserInfo] = useState<{ [key: string]: UserInfo }>({})
+  const userData = useUserData()
+
   
   const handleDelete = async () => {
     if (!confirm('Are you sure you want to delete this comment?')) return
@@ -77,10 +88,19 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
   }
 
   const handleLike = async () => {
-    if (!currentUserId) return
+    if (!currentUserId || !userData) return
     
     try {
       await toggleCommentLike(comment.id, currentUserId)
+      // Add current user info to the userInfo state immediately
+      setUserInfo(prev => ({
+        ...prev,
+        [currentUserId]: {
+          firstName: userData.firstName,
+          lastName: userData.lastName,
+          imageUrl: userData.imageUrl
+        }
+      }))
     } catch (error) {
       console.error('Error toggling like:', error)
     }
@@ -88,19 +108,44 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      if (!comment.likes?.length) return
-      const info: { [key: string]: UserInfo } = {}
+      if (!comment.likes?.length) return      
+      const newUserInfo: { [key: string]: UserInfo } = {}
       
-      for (const userId of comment.likes) {
-        const userDoc = await getDoc(doc(db, 'users', userId))
-        if (userDoc.exists()) {
-          info[userId] = userDoc.data() as UserInfo
+      // Add current user's info if they've liked the comment
+      if (userData && comment.likes.includes(userData.id)) {
+        newUserInfo[userData.id] = {
+          firstName: userData.firstName,
+          lastName: userData.lastName,
+          imageUrl: userData.imageUrl
         }
       }
-      setUserInfo(info)
+      
+      // Fetch other users' info
+      for (const userId of comment.likes) {
+        if (!userInfo[userId] && userId !== userData?.id) {
+          try {
+            const userDoc = await getDoc(doc(db, 'users', userId))
+            if (userDoc.exists()) {
+              const data = userDoc.data()
+              newUserInfo[userId] = {
+                firstName: data.firstName,
+                lastName: data.lastName,
+                imageUrl: data.imageUrl
+              }
+            }
+          } catch (error) {
+            console.error('Error fetching user info:', error)
+          }
+        }
+      }
+      
+      if (Object.keys(newUserInfo).length > 0) {
+        setUserInfo(prev => ({ ...prev, ...newUserInfo }))
+      }
     }
+
     fetchUserInfo()
-  }, [comment.likes])
+  }, [comment.likes, userData])
 
   return (
     <motion.div

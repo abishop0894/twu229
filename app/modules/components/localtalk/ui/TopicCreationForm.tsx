@@ -2,7 +2,8 @@
 
 import { useState, useRef } from 'react'
 import { useUserData } from '@/lib/hooks/useUserData'
-// import { uploadToS3 } from '@/lib/s3'
+import { uploadToS3 } from '@/lib/s3'
+
 import { createTopic } from '@/lib/firebase/operations'
 import { Category, MediaType } from '@/lib/firebase/types'
 import { ImagePlus, X, Loader2 } from 'lucide-react'
@@ -70,36 +71,36 @@ export default function TopicCreationForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!userData) return
-
     setIsSubmitting(true)
     setError(null)
 
     try {
-      // let mediaUrl: string | undefined
-      // let mediaType: MediaType | undefined
-      console.log("media")
-
       if (media) {
-        // mediaUrl = await uploadToS3(media.file)
-        // mediaType = media.type
-      }
-
-      await createTopic({
-        title: form.title.trim(),
-        content: form.content.trim(),
-        category: form.category,
-        userId: userData.id,
-        username: userData.firstName,
-        userAvatar: userData.imageUrl,
-        timestamp: Timestamp.now(),
-        commentCount: 0,
-        ...(media ? {
-          mediaUrl: media.previewUrl,
+        const url = await uploadToS3(media.file)
+        await createTopic({
+          title: form.title.trim(),
+          content: form.content.trim(),
+          category: form.category,
+          userId: userData.id,
+          username: userData.firstName + ' ' + userData.lastName,
+          userAvatar: userData.imageUrl,
+          timestamp: Timestamp.now(),
+          commentCount: 0,
+          mediaUrl: url,
           mediaType: media.type
-        } : {})
-      })
-
-    
+        })
+      } else {
+        await createTopic({
+          title: form.title.trim(),
+          content: form.content.trim(),
+          category: form.category,
+          userId: userData.id,
+          username: userData.firstName + ' ' + userData.lastName,
+          userAvatar: userData.imageUrl,
+          timestamp: Timestamp.now(),
+          commentCount: 0
+        })
+      }
       // Reset form
       setForm({ title: '', content: '', category: 'transportation' })
       setMedia(null)
@@ -109,10 +110,9 @@ export default function TopicCreationForm() {
       setError('Failed to create topic. Please try again.')
       console.error('Error creating topic:', err)
     } finally {
-
       setIsSubmitting(false)
     }
-   window.location.reload()
+    window.location.reload()
   }
 
   return (

@@ -6,20 +6,37 @@ import UpcomingEvents from '@/app/modules/components/home/UpcomingEvents'
 import PageLayout from '@/app/modules/layout/layout-comp'
 import { CTASection } from '@/app/modules/components/home/CtaHome'
 import GetInvolved from '@/app/modules/components/polls/GetInvolved'
+import { SignedIn, SignedOut } from '@clerk/nextjs'
+
 
 
 
 
 export default function Home() {
   return (
-    <PageLayout className="overflow-x-hidden">
-      <Hero />
-      <MissionStatement />
-      <ExecutiveBoard />
-      <NewsUpdates />
-      <UpcomingEvents />
+    <>
+    <SignedOut>
+      <PageLayout className="overflow-x-hidden">
+        <Hero />
+        <MissionStatement />
+        <ExecutiveBoard />
+        <NewsUpdates />
+        <UpcomingEvents />
       <CTASection />
       <GetInvolved join={true} />
     </PageLayout>
+    </SignedOut>
+    <SignedIn>
+      <PageLayout className="overflow-x-hidden">
+        <Hero />
+        <MissionStatement />
+        <ExecutiveBoard />
+        <NewsUpdates />
+        <UpcomingEvents />
+      <CTASection />
+      <GetInvolved join={true} />
+      </PageLayout>
+    </SignedIn>
+    </>
   )
 }

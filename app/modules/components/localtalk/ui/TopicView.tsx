@@ -128,7 +128,8 @@ export default function TopicView({ topicId }: TopicViewProps) {
               <video
                 src={topic.mediaUrl}
                 controls
-                className="w-full rounded-lg"
+                className="w-full rounded-lg max-h-[500px]"
+
               />
             )}
           </div>
