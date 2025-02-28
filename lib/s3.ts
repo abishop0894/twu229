@@ -11,7 +11,6 @@ const s3Client = new S3Client({
 export const uploadToS3 = async (file: File, folder: string = 'topics'): Promise<string> => {
   const fileExtension = file.name.split('.').pop()
   const fileName = `${folder}/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExtension}`
-  
   const arrayBuffer = await file.arrayBuffer()
   const buffer = Buffer.from(arrayBuffer)
 

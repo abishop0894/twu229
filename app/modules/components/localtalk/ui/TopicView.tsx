@@ -129,6 +129,7 @@ export default function TopicView({ topicId }: TopicViewProps) {
                 src={topic.mediaUrl}
                 controls
                 className="w-full rounded-lg max-h-[500px]"
+
               />
             )}
           </div>

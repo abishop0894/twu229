@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react'
 import { useUserData } from '@/lib/hooks/useUserData'
 import { uploadToS3 } from '@/lib/s3'
+
 import { createTopic } from '@/lib/firebase/operations'
 import { Category, MediaType } from '@/lib/firebase/types'
 import { ImagePlus, X, Loader2 } from 'lucide-react'
@@ -57,8 +58,6 @@ export default function TopicCreationForm() {
 
   const handleMediaSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
-  
-  
     if (!file) return
 
     const mediaType = validateMedia(file)

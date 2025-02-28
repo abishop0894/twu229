@@ -231,7 +231,6 @@ export const CTASection = () => {
             alt="TWU Local 229 Photos"
             fill
             className="object-cover object-center"
-            
           />
         </motion.div>
         <motion.div 

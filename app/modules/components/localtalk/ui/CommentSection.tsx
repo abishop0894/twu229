@@ -76,6 +76,7 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
   const [showLikes, setShowLikes] = useState(false)
   const [userInfo, setUserInfo] = useState<{ [key: string]: UserInfo }>({})
   const userData = useUserData()
+
   
   const handleDelete = async () => {
     if (!confirm('Are you sure you want to delete this comment?')) return
@@ -107,8 +108,7 @@ const CommentThread = ({ comment, level = 0, onReply, currentUserId }: CommentTh
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      if (!comment.likes?.length) return
-      
+      if (!comment.likes?.length) return      
       const newUserInfo: { [key: string]: UserInfo } = {}
       
       // Add current user's info if they've liked the comment

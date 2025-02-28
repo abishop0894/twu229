@@ -15,7 +15,6 @@ export default function ExecutiveBoardPage() {
     }
  
     return (
-      
     <PageLayout className="pt-[12vh]">
       <Hero 
         title={pageData.hero.title}
@@ -26,7 +25,6 @@ export default function ExecutiveBoardPage() {
       <LeadershipVision />
       <ContactBoard />
     </PageLayout>
-   
   )
 } 
 
