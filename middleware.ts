@@ -1,12 +1,22 @@
-import { clerkMiddleware } from '@clerk/nextjs/server'
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-export default clerkMiddleware()
+// Define only the protected routes that need authentication
+const isProtectedRoute = createRouteMatcher([
+  '/localtalk(.*)', 
+  '/members/survey(.*)'
+])
+
+export default clerkMiddleware(async (auth, req) => {
+  // Only check authentication on the protected routes
+  if (isProtectedRoute(req)) await auth.protect()
+})
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes
-    '/(api|trpc)(.*)',
+    // Only run middleware on the specific protected routes
+    '/localtalk(.*)',
+    '/members/survey(.*)',
+    // And API routes
+    '/api/((?!webhook).*)'
   ],
 }
