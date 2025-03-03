@@ -34,7 +34,7 @@ const Intro = () => {
               src={member.image}
               alt={`${member.firstName} ${member.lastName}`}
               fill
-              className="object-cover"
+              className="object-cover object-center"
             />
           </motion.div>
 
