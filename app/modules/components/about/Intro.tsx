@@ -28,7 +28,7 @@ const Intro = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-2 lg:order-1"
+            className="relative h-[600px] rounded-lg overflow-hidden shadow-xl order-2 lg:order-1"
           >
             <Image
               src={member.image}
