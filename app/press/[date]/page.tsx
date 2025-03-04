@@ -21,7 +21,7 @@
 
     return (
         <PageLayout>
-            <div className="w-full h-[24vh] z-[100] bg-[#0a0086]" />
+            
         <Article 
         title={article.title}
         date={article.date}
