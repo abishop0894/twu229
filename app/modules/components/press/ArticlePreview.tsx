@@ -21,11 +21,12 @@
     const formattedDate = new Date(date).toISOString().split('T')[0]
     
     return (
+        <Link href={`/press/${formattedDate}`}>
         <motion.article
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="w-[95%] mx-auto bg-white rounded-lg shadow-lg overflow-hidden min-h-[200px] h-auto sm:h-[25vh] lg:h-[30vh] relative"
+        className="w-[95%] mx-auto bg-white rounded-lg shadow-lg overflow-hidden min-h-[200px] h-auto sm:h-[35vh] md:h-[40vh] lg:h-[40vh] relative"
         >
         <div className="grid grid-cols-1 sm:grid-cols-3 h-full">
             <div className="relative h-48 sm:h-full">
@@ -52,15 +53,11 @@
                 }}
                 />
             </div>
-            <Link
-                href={`/press/${formattedDate}`}
-                className="absolute bottom-4 mt-[2vh] mb-[2vh] right-4 sm:bottom-6 sm:right-6 px-3 py-1.5 sm:px-4 sm:py-2 bg-[#0a0086] text-white text-sm sm:text-base rounded-lg hover:bg-blue-900 transition-colors"
-            >
-                Read More
-            </Link>
+        
             </div>
         </div>
         </motion.article>
+        </Link>
     )
     }
 

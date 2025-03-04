@@ -20,7 +20,7 @@
     }
 
     return (
-        <PageLayout>
+        <PageLayout className='pt-[14vh]'>
             
         <Article 
         title={article.title}
